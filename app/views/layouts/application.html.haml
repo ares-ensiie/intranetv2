@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Intranet
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    - if user_signed_in?
+      = render "shared/nav"
+    .container
+      = yield
+
+- if flash[:notice]
+  :javascript
+    toastr.success("#{flash[:notice]}")
+- if flash[:error]
+  :javascript
+    toastr.error("#{flash[:error]}")
+- if flash[:alert]
+  :javascript
+    toastr.error("#{flash[:alert]}")

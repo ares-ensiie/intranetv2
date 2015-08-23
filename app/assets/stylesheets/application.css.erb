@@ -1,0 +1,31 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require rails_bootstrap_forms
+ *= require_tree .
+ *= require toastr
+ *= require_self
+ */
+
+body{
+  background-image: url(<%= asset_path 'login_bg.jpg' %>);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.login-container{
+  margin-top: 5em;
+}
+
+.panel-title.with-button{
+  padding-top: 7.5px
+}

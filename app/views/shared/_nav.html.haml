@@ -1,0 +1,27 @@
+%nav.navbar.navbar-inverse.navbar-static-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#main-menu-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "ENSIIE Intranet", root_path, :class => "navbar-brand"
+    .collapse.navbar-collapse#main-menu-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = current_user.uid
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Profil
+            %li
+              = link_to "Changer mon mot de passe", edit_user_path(current_user)
+            %li.divider{:role => "separator"}
+            %li
+              = link_to "Mes applications", oauth_applications_path
+            %li
+              = link_to "Applications authorisées", oauth_authorized_applications_path
+            %li.divider{:role => "separator"}
+            %li
+              = link_to "Deconnexion", destroy_user_session_path, :method => :delete

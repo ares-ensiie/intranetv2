@@ -1,0 +1,19 @@
+.row
+  .col-md-10.col-md-offset-1
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title= t('doorkeeper.authorized_applications.index.title')
+      .panel-body
+        %table.table.table-striped
+          %thead
+            %tr
+              %th= t('doorkeeper.authorized_applications.index.application')
+              %th= t('doorkeeper.authorized_applications.index.created_at')
+              %th
+              %th
+          %tbody
+            - @applications.each do |application|
+              %tr
+                %td= application.name
+                %td= application.created_at.strftime(t('doorkeeper.authorized_applications.index.date_format'))
+                %td= render 'delete_form', application: application

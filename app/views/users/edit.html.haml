@@ -1,0 +1,11 @@
+.row
+  .col-md-10.col-md-offset-1
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Changer mon mot de passe
+      .panel-body
+        = bootstrap_form_tag({url: user_path, method: :put}) do |f|
+          = f.password_field :current_password, {label: "Mot de passe actuel"}
+          = f.password_field :password, {label: "Nouveau mot de passe"}
+          = f.password_field :confirmation, {label: "Confirmation"}
+          = f.submit "Valider"

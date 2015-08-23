@@ -1,0 +1,5 @@
+host: ares-ensiie.eu
+port: 389
+auth_dn: "cn=admin,dc=ares,dc=ensiie"
+auth_pass: 
+search_base: "ou=students,dc=ares,dc=ensiie"
