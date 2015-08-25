@@ -18,7 +18,7 @@ class UsersController < ApplicationController
           ldap.auth results[0][:dn], params[:current_password]
           if ldap.bind
             operations = [
-              [:replace, :userPassword, params[:password]]
+              [:replace, :userPassword, "{md5}"+Base64.encode64(Digest::MD5.digest(params[:password])).chomp!]
             ]
             if ldap.modify :dn => results[0][:dn], :operations => operations
               flash[:notice] = "Mot de passe changé"
