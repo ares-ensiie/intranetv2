@@ -15,6 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require toastr
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/gcal
+//= require fullcalendar/lang/fr
 //= require_tree .
 
 toastr.options = {

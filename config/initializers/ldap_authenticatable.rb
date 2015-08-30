@@ -11,7 +11,7 @@ module Devise
           ldap.port = LDAP_CONFIG["port"]
           ldap.auth LDAP_CONFIG["auth_dn"], LDAP_CONFIG["auth_pass"]
 
-          filter = Net::LDAP::Filter.eq( "uid", params[:user][:email] )
+          filter = Net::LDAP::Filter.eq( "uid", params[:user][:email])
           treebase = LDAP_CONFIG["search_base"]
 
           results = ldap.search( :base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)

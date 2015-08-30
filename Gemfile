@@ -29,6 +29,8 @@ gem 'bootstrap_form'
 gem 'net-ldap', '~> 0.11'
 gem 'toastr-rails'
 gem 'doorkeeper'
+gem 'momentjs-rails'
+gem 'fullcalendar.io-rails'
 
 
 # Use ActiveModel has_secure_password
