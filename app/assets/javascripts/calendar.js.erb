@@ -13,27 +13,27 @@ $(document).ready(function() {
     googleCalendarApiKey: k["key"]  // clé de l'API google calendar
   })
 
-  $('#calendar').ready(function(){  // on attend que le calendrier soit chargé pour éviter tout problème lors du chargement des calendriers
-    promo = <%= $cur_prom %>  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
-    if(promo == 2016){  // si c'est la promo 2016 (3a)
-      $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], className: "3a"}) // on ajoute leur tronc commun au calendrier
-      $(".3a").toggleClass("btn-success") // on change la couleur du bouton
-      $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3ao"], className: "3ao"}) // on ajoute leurs options au calendrier
-      $(".3ao").toggleClass("btn-success")  // on change la couleur du bouton
-    }
-    else if (promo == 2017) { // si c'est la promo 2016 (2a)
-      $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], className: "2a"}) // on ajoute leur tronc commun au calendrier
-      $(".2a").toggleClass("btn-success") // on change la couleur du bouton
-      $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2ao"], className: "2ao"}) // on ajoute leurs options au calendrier
-      $(".2ao").toggleClass("btn-success")  // on change la couleur du bouton
-    }
-    else if (promo == 2018) { // si c'est la promo 2016 (1a et 0a pour ceux qui n'ont pas fait leur WEI)
-      $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["1a"], className: "1a"}) // on ajoute leur tronc commun au calendrier
-      $(".1a").toggleClass("btn-success") // on change la couleur du bouton
-    }
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], className: "bde"}) // on ajoute le calendrier BDE dans tous les cas au calendrier
-    $(".bde").toggleClass("btn-success")  // on change la couleur du bouton
-  })
+  //$('#calendar').ready(function(){  // on attend que le calendrier soit chargé pour éviter tout problème lors du chargement des calendriers
+  promo = <%= $cur_prom %>  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
+  if(promo == 2016){  // si c'est la promo 2016 (3a)
+    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], className: "3a"}) // on ajoute leur tronc commun au calendrier
+    $(".3a").toggleClass("btn-success") // on change la couleur du bouton
+    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3ao"], className: "3ao"}) // on ajoute leurs options au calendrier
+    $(".3ao").toggleClass("btn-success")  // on change la couleur du bouton
+  }
+  else if (promo == 2017) { // si c'est la promo 2016 (2a)
+    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], className: "2a"}) // on ajoute leur tronc commun au calendrier
+    $(".2a").toggleClass("btn-success") // on change la couleur du bouton
+    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2ao"], className: "2ao"}) // on ajoute leurs options au calendrier
+    $(".2ao").toggleClass("btn-success")  // on change la couleur du bouton
+  }
+  else if (promo == 2018) { // si c'est la promo 2016 (1a et 0a pour ceux qui n'ont pas fait leur WEI)
+    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["1a"], className: "1a"}) // on ajoute leur tronc commun au calendrier
+    $(".1a").toggleClass("btn-success") // on change la couleur du bouton
+  }
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], className: "bde"}) // on ajoute le calendrier BDE dans tous les cas au calendrier
+  $(".bde").toggleClass("btn-success")  // on change la couleur du bouton
+  //})
 
   $(".calendar-button").click(function(){
     calendar_name = $(this).attr("cal_id")  // nom de la classe (1a, 2a, 2ao, 3a, 3ao, bde)
