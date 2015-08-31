@@ -30,7 +30,9 @@ gem 'net-ldap', '~> 0.11'
 gem 'toastr-rails'
 gem 'doorkeeper'
 gem 'momentjs-rails'
+gem "font-awesome-rails"
 gem 'fullcalendar.io-rails'
+gem 's3', '~> 0.3.23'
 
 
 # Use ActiveModel has_secure_password
