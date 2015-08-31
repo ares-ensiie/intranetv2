@@ -6,3 +6,7 @@ calendar:
   3a: k9lf59hq805o5enoo01mhjv9m8@group.calendar.google.com
   3ao: attente
   bde: lhonilnm3lvk7o4g1d556pf1hk@group.calendar.google.com
+aws:
+  access_key_id: AKIAIPVH6UOBL23IZXBA
+  secret_access_key: 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
+  bucket: ares-intranet-storage

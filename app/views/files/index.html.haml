@@ -1,0 +1,14 @@
+%ol.breadcrumb
+  -@path.each do | directory |
+    %li
+      = link_to directory[:name], files_path(directory[:path])
+
+.jumbotron
+  - @files.each do | path, content |
+    %br
+    %i.fa{:class => get_icon(content)}
+    - if content.is_a?(String)
+      = link_to path, files_path(content)
+    - else
+      = link_to path, content.url, target: "_blank"
+

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   get '/calendar' => 'calendar#index', as: :calendar
 
+  get '/files/*path' => 'files#index', as: :files
+  get '/files' => 'files#index', as: :base_files
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
