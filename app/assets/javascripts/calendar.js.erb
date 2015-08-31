@@ -21,7 +21,7 @@ $(document).ready(function() {
   })
 
 
-  promo = <%= $cur_prom %>  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
+  promo = window.current_user_promo  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
   if(promo == 2016){  // si c'est la promo 2016 (3a)
   $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], color: cal_color["3a"]}) // on ajoute leur tronc commun au calendrier
   $(".3a").toggleClass("btn-success") // on change la couleur du bouton
