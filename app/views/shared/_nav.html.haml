@@ -9,7 +9,11 @@
     .collapse.navbar-collapse#main-menu-collapse
       %ul.nav.navbar-nav
         %li
+          = link_to "Calendrier", calendar_path
+        %li
           = link_to "Ragots", "https://ragots.ares-ensiie.eu", :target => "_blank"
+        %li
+          = link_to "Archives",  base_files_path
         %li
           = link_to "Drinkiit", soon_path
         %li.dropdown
