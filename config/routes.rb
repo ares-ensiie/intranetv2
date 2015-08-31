@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update]
 
+  get '/soon' => "home#coming_soon", as: :soon
+
   namespace :api do
     namespace :v1 do
       get '/me' => 'api#me'

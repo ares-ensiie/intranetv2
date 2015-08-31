@@ -7,6 +7,27 @@
         %span.icon-bar
       = link_to "ENSIIE Intranet", root_path, :class => "navbar-brand"
     .collapse.navbar-collapse#main-menu-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to "Ragots", "https://ragots.ares-ensiie.eu", :target => "_blank"
+        %li
+          = link_to "Drinkiit", soon_path
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Services Ares
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Gitlab", "https://git.ares-ensiie.eu", :target => "_blank"
+            %li
+              = link_to "Mailing lists", "https://sympa.ares-ensiie.eu/wws", :target => "_blank"
+            %li
+              = link_to "Irc", "https://wiki.ares-ensiie.eu/perso", :target => "_blank"
+        %li
+          = link_to "Docs", "https://wiki.ares-ensiie.eu", :target => "_blank"
+        %li
+          = link_to "Signaler un bug", "https://bugtracker.ares-ensiie.eu", :target => "_blank"
+
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -14,7 +35,7 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#"} Profil
+              = link_to "Profil", soon_path
             %li
               = link_to "Changer mon mot de passe", edit_user_path(current_user)
             %li.divider{:role => "separator"}

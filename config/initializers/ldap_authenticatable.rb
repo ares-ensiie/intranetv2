@@ -21,7 +21,6 @@ module Devise
               user = User.find_or_create_by(email: results[0][:mail][0])
               user.update({uid: params[:user][:email], password: "dummydummy", promo: results[0][:roomnumber][0]})
               user.save!
-              puts user.to_json
               success!(user)
             else
               fail(:invalid_login)
