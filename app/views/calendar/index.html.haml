@@ -1,34 +1,28 @@
 .row{:style => "overflow-y: auto;"}
-  .col-xs-9
+  .col-xs-1
+  .col-xs-10
     .panel.panel-default
       .panel-heading
         .text-center
           %h1
             Calendrier
+      .panel-body.text-center
+        .row
+          .btn-toolbar-sm
+            .btn-group
+              %a.btn.btn-default.calendar-button.1a{:href=>"#", :cal_id=>"1a"}
+                1e année
+            .btn-group
+              %a.btn.btn-default.calendar-button.2a{:href=>"#", :cal_id=>"2a"}
+                2e année
+              %a.btn.btn-default.calendar-button.2ao{:href=>"#", :cal_id=>"2ao"}
+                options
+            .btn-group
+              %a.btn.btn-default.calendar-button.3a{:href=>"#", :cal_id=>"3a"}
+                3e année
+            .btn-group
+              %a.btn.btn-default.calendar-button.bde{:href=>"#", :cal_id=>"bde"}
+                BDE
       .panel-body
-        #calendar
-  .col-xs-3
-    .panel.panel-default
-      .panel-heading
-        .text-center
-          %h1
-            Disponibles
-      .panel-body
         .row
-          %a.btn.btn-default.calendar-button.1a{:href=>"#", :cal_id=>"1a"}
-            1e année
-        .row
-          %a.btn.btn-default.calendar-button.2a{:href=>"#", :cal_id=>"2a"}
-            2e année
-        .row
-          %a.btn.btn-default.calendar-button.2ao{:href=>"#", :cal_id=>"2ao"}
-            2e année (options)
-        .row
-          %a.btn.btn-default.calendar-button.3a{:href=>"#", :cal_id=>"3a"}
-            3e année
-        .row
-          %a.btn.btn-default.calendar-button.3ao{:href=>"#", :cal_id=>"3ao"}
-            3e année (options)
-        .row
-          %a.btn.btn-default.calendar-button.bde{:href=>"#", :cal_id=>"bde"}
-            BDE
+          #calendar

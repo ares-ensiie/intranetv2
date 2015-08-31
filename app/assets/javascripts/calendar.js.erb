@@ -1,6 +1,13 @@
 $(document).ready(function() {
 
   k = <%= APP_CONFIG["calendar"].to_json %>
+  cal_color = {
+    "bde":"#8a00ab",
+    "1a":"#006400",
+    "2a":"#ff8000",
+    "2ao":"#ff0000",
+    "3a":"#00008b"
+  }
 
   $('#calendar').fullCalendar({
     firstDay:1, //premier jour de la semaine => Lundi
@@ -13,27 +20,25 @@ $(document).ready(function() {
     googleCalendarApiKey: k["key"]  // clé de l'API google calendar
   })
 
-  //$('#calendar').ready(function(){  // on attend que le calendrier soit chargé pour éviter tout problème lors du chargement des calendriers
+
   promo = <%= $cur_prom %>  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
   if(promo == 2016){  // si c'est la promo 2016 (3a)
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], className: "3a", color: "blue"}) // on ajoute leur tronc commun au calendrier
-    $(".3a").toggleClass("btn-success") // on change la couleur du bouton
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3ao"], className: "3ao"}) // on ajoute leurs options au calendrier
-    $(".3ao").toggleClass("btn-success")  // on change la couleur du bouton
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], color: cal_color["3a"]}) // on ajoute leur tronc commun au calendrier
+  $(".3a").toggleClass("btn-success") // on change la couleur du bouton
   }
   else if (promo == 2017) { // si c'est la promo 2016 (2a)
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], className: "2a", color: "green"}) // on ajoute leur tronc commun au calendrier
-    $(".2a").toggleClass("btn-success") // on change la couleur du bouton
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2ao"], className: "2ao"}) // on ajoute leurs options au calendrier
-    $(".2ao").toggleClass("btn-success")  // on change la couleur du bouton
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], color: cal_color["2a"]}) // on ajoute leur tronc commun au calendrier
+  $(".2a").toggleClass("btn-success") // on change la couleur du bouton
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2ao"], color: cal_color["2ao"]}) // on ajoute leurs options au calendrier
+  $(".2ao").toggleClass("btn-success")  // on change la couleur du bouton
   }
   else if (promo == 2018) { // si c'est la promo 2016 (1a et 0a pour ceux qui n'ont pas fait leur WEI)
-    $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["1a"], className: "1a", color: "yellow"}) // on ajoute leur tronc commun au calendrier
-    $(".1a").toggleClass("btn-success") // on change la couleur du bouton
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["1a"], color: cal_color["1a"]}) // on ajoute leur tronc commun au calendrier
+  $(".1a").toggleClass("btn-success") // on change la couleur du bouton
   }
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], className: "bde", color: "red"}) // on ajoute le calendrier BDE dans tous les cas au calendrier
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], color: cal_color["bde"]}) // on ajoute le calendrier BDE dans tous les cas au calendrier
   $(".bde").toggleClass("btn-success")  // on change la couleur du bouton
-  //})
+
 
   $(".calendar-button").click(function(){
     calendar_name = $(this).attr("cal_id")  // nom de la classe (1a, 2a, 2ao, 3a, 3ao, bde)
@@ -43,8 +48,7 @@ $(document).ready(function() {
         $('#calendar').fullCalendar('removeEventSource', calendar_id) // retire une source de calendrier
       }
       else{ //si la source n'est pas déjà affichée
-        $('#calendar').fullCalendar('addEventSource', {googleCalendarId: calendar_id, className: calendar_name})  // ajoute une source de calendrier
-        $('#calendar').fullCalendar({events: calendar_name, eventColor: '#117ed5'}) // on essaye de changer la couleur (marche pas)
+        $('#calendar').fullCalendar('addEventSource', {googleCalendarId: calendar_id, color: cal_color[calendar_name]})  // ajoute une source de calendrier
       }
       $(this).toggleClass("btn-success")  // On permute la classe du bouton ici
     }
