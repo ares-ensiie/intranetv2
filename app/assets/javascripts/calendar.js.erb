@@ -1,15 +1,18 @@
 $(document).ready(function() {
 
   k = <%= APP_CONFIG["calendar"].to_json %>
-  cal_color = {
+  cal_color = { // couleur de fond pour les évènements de chaque calendrier
     "bde":"#8a00ab",
     "1a":"#006400",
     "2a":"#ff8000",
     "2ao":"#ff0000",
-    "3a":"#00008b"
+    "3a":"#00008b",
+    "3ao":"00008b"
   }
 
   $('#calendar').fullCalendar({
+    minTime:'08:00:00', // debut du calendrier à 8h du matin
+    height:'auto', // hauteur automatique donc pas de scrollbar dans le calendrier
     firstDay:1, //premier jour de la semaine => Lundi
     defaultView:'agendaWeek', // par défaut on affiche un agenda semaine
     header:{ // Mise en forme de l entete
@@ -25,6 +28,8 @@ $(document).ready(function() {
   if(promo == 2016){  // si c'est la promo 2016 (3a)
   $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], color: cal_color["3a"]}) // on ajoute leur tronc commun au calendrier
   $(".3a").toggleClass("btn-success") // on change la couleur du bouton
+  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3ao"], color: cal_color["3ao"]}) // on ajoute leurs options au calendrier
+  $(".3ao").toggleClass("btn-success") // on change la couleur du bouton
   }
   else if (promo == 2017) { // si c'est la promo 2016 (2a)
   $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], color: cal_color["2a"]}) // on ajoute leur tronc commun au calendrier
