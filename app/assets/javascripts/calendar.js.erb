@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   k = <%= APP_CONFIG["calendar"].to_json %>
-  cal_color = {
+  cal_color = { // couleur de fond pour les évènements de chaque calendrier
     "bde":"#8a00ab",
     "1a":"#006400",
     "2a":"#ff8000",
@@ -11,8 +11,8 @@ $(document).ready(function() {
   }
 
   $('#calendar').fullCalendar({
-    minTime:'08:00:00',
-    height:'auto',
+    minTime:'08:00:00', // debut du calendrier à 8h du matin
+    height:'auto', // hauteur automatique donc pas de scrollbar dans le calendrier
     firstDay:1, //premier jour de la semaine => Lundi
     defaultView:'agendaWeek', // par défaut on affiche un agenda semaine
     header:{ // Mise en forme de l entete
@@ -43,6 +43,7 @@ $(document).ready(function() {
   }
   $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], color: cal_color["bde"]}) // on ajoute le calendrier BDE dans tous les cas au calendrier
   $(".bde").toggleClass("btn-success")  // on change la couleur du bouton
+
 
   $(".calendar-button").click(function(){
     calendar_name = $(this).attr("cal_id")  // nom de la classe (1a, 2a, 2ao, 3a, 3ao, bde)
