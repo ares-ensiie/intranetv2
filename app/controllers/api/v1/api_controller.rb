@@ -5,7 +5,6 @@ class Api::V1::ApiController < ApplicationController
 
   # GET /me.json
   def me
-    puts params
     respond_with current_resource_owner
   end
 
