@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: [:edit, :update] do
+    put "/password" => "users#update_password", as: :update_password
+  end
 
   get '/soon' => "home#coming_soon", as: :soon
 

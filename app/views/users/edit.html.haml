@@ -2,9 +2,28 @@
   .col-md-10.col-md-offset-1
     .panel.panel-primary
       .panel-heading
-        %h3.panel-title Changer mon mot de passe
+        %h3.panel-title Mes informations
       .panel-body
         = bootstrap_form_tag({url: user_path, method: :put}) do |f|
+          .row
+            .col-md-6.col-xs-12
+              = f.text_field :name, {label: "Nom", value: "HURTER"}
+            .col-md-6.col-xs-12
+              = f.text_field :surname, {label: "Prenom", value: "Jonathan"}
+            .col-md-6.col-xs-12
+              = f.text_field :phone, {label: "Telephone portable", value: "0680204297"}
+            .col-md-6.col-xs-12
+              = f.text_field :email, {label: "Email", value: "jonathan@hurter.fr"}
+            .col-md-6.col-xs-12
+              = f.date_field :birthday, {label: "Anniversaire", value: "1994-09-28"}
+            .col-md-6.col-xs-12
+              = f.text_field :address, {label: "Addresse", value:"41 rue de Selestat 67100 Strasbourg"}
+          = f.submit "Valider"
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Changer mon mot de passe
+      .panel-body
+        = bootstrap_form_tag({url: user_update_password_path(@user), method: :put}) do |f|
           = f.password_field :current_password, {label: "Mot de passe actuel"}
           = f.password_field :password, {label: "Nouveau mot de passe"}
           = f.password_field :confirmation, {label: "Confirmation"}

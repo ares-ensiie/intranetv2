@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def update
+  def update_password
     if params[:password].length > 7
       if params[:password] == params[:confirmation]
         ldap = init_ldap
