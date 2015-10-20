@@ -15,10 +15,10 @@
             .col-md-6.col-xs-12
               = f.text_field :email, {label: "Email"}
             .col-md-6.col-xs-12
-              = f.date_field :birthday, {label: "Anniversaire", value: "1994-09-28"}
+              = f.date_field :birthday, {label: "Anniversaire"}
             .col-md-6.col-xs-12
-              = f.text_field :address, {label: "Addresse", value:"41 rue de Selestat 67100 Strasbourg"}
-          = f.submit
+              = f.text_field :address, {label: "Addresse"}
+          = f.submit "Valider"
     .panel.panel-primary
       .panel-heading
         %h3.panel-title Changer mon mot de passe
