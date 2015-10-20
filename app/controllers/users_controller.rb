@@ -1,9 +1,13 @@
 require "net/ldap"
 class UsersController < ApplicationController
-  before_filter :update_params, only: :update
   before_action :set_user
 
   def edit
+  end
+
+  def update
+    @user.update_attributes(params.require(:user).permit(:id, :current_password, :password, :confirmation, :name, :lastname, :phone, :birthday, :address, :email))
+    redirect_to edit_user_path @user
   end
 
   def update_password
@@ -47,10 +51,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def update_params
-    params.permit(:id, :current_password, :password, :confirmation)
   end
 
   def init_ldap

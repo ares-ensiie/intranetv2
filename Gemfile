@@ -31,6 +31,7 @@ gem 'momentjs-rails'
 gem "font-awesome-rails"
 gem 'fullcalendar.io-rails'
 gem 's3', '~> 0.3.23'
+gem 'phony_rails'
 
 
 # Use ActiveModel has_secure_password

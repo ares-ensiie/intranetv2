@@ -106,6 +106,10 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.1)
+    phony (2.15.4)
+    phony_rails (0.12.10)
+      activesupport (>= 3.0)
+      phony (~> 2.12)
     proxies (0.2.1)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -200,6 +204,7 @@ DEPENDENCIES
   momentjs-rails
   net-ldap (~> 0.11)
   pg
+  phony_rails
   rails (= 4.2.3)
   s3 (~> 0.3.23)
   sass-rails (~> 5.0)

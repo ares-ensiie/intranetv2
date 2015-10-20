@@ -4,21 +4,21 @@
       .panel-heading
         %h3.panel-title Mes informations
       .panel-body
-        = bootstrap_form_tag({url: user_path, method: :put}) do |f|
+        = bootstrap_form_for(@user) do |f|
           .row
             .col-md-6.col-xs-12
-              = f.text_field :name, {label: "Nom", value: "HURTER"}
+              = f.text_field :lastname, {label: "Nom"}
             .col-md-6.col-xs-12
-              = f.text_field :surname, {label: "Prenom", value: "Jonathan"}
+              = f.text_field :name, {label: "Prenom"}
             .col-md-6.col-xs-12
-              = f.text_field :phone, {label: "Telephone portable", value: "0680204297"}
+              = f.text_field :phone, {label: "Telephone portable"}
             .col-md-6.col-xs-12
-              = f.text_field :email, {label: "Email", value: "jonathan@hurter.fr"}
+              = f.text_field :email, {label: "Email"}
             .col-md-6.col-xs-12
               = f.date_field :birthday, {label: "Anniversaire", value: "1994-09-28"}
             .col-md-6.col-xs-12
               = f.text_field :address, {label: "Addresse", value:"41 rue de Selestat 67100 Strasbourg"}
-          = f.submit "Valider"
+          = f.submit
     .panel.panel-primary
       .panel-heading
         %h3.panel-title Changer mon mot de passe
