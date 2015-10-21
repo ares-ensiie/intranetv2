@@ -8,34 +8,44 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.id != @user.id
+      flash[:error] = "Ne touchez pas aux informations des autres !"
+      redirect_to root_path
+    end
   end
 
   def edit_password
   end
 
   def update
-    @user.update_attributes(params.require(:user).permit(:id, :current_password, :password, :confirmation, :name, :lastname, :phone, :birthday, :address, :email))
-    ldap = init_ldap
-    filter = Net::LDAP::Filter.eq("uid", @user.uid)
-    treebase = LDAP_CONFIG["search_base"]
-    results = ldap.search(:base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
-    if results.length == 1
-      operations = [
-        [:replace, :sn, @user.lastname],
-        [:replace, :givenname, @user.name],
-        [:replace, :mobile, @user.phone],
-        [:replace, :postalAddress, @user.address]
-      ]
-      if ldap.modify :dn => results[0][:dn], :operations => operations
-        flash[:notice] = "Informations mises a jour"
+    if current_user.id == params[:user][:id]
+      @user.update_attributes(params.require(:user).permit(:id, :current_password, :password, :confirmation, :name, :lastname, :phone, :birthday, :address, :email))
+      ldap = init_ldap
+      filter = Net::LDAP::Filter.eq("uid", @user.uid)
+      treebase = LDAP_CONFIG["search_base"]
+      results = ldap.search(:base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
+      if results.length == 1
+        operations = [
+          [:replace, :sn, @user.lastname],
+          [:replace, :givenname, @user.name],
+          [:replace, :mobile, @user.phone],
+          [:replace, :postalAddress, @user.address]
+        ]
+        if ldap.modify :dn => results[0][:dn], :operations => operations
+          flash[:notice] = "Informations mises a jour"
+        else
+          flash[:error] = "Erreur lors de la synchronisation avec LDAP"
+        end
       else
         flash[:error] = "Erreur lors de la synchronisation avec LDAP"
       end
+      redirect_to edit_user_path @user 
     else
-      flash[:error] = "Erreur lors de la synchronisation avec LDAP"
+      flash[:error] = "Ne touchez pas aux informations des autres !"
+      redirect_to root_path
     end
 
-    redirect_to edit_user_path @user
+    
   end
 
   def update_password
