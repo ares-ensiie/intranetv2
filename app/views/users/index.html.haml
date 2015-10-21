@@ -22,8 +22,8 @@
                 %tbody
                   - list.sort_by{|user| user.lastname || ""}.each do | user |
                     %tr
-                      %td= user.lastname
-                      %td= user.name
+                      %td= user.lastname.capitalize
+                      %td= user.name.capitalize
                       %td= user.email
                       %td= user.phone
 
