@@ -32,6 +32,7 @@
 
       - if ! @users_incoming.empty?
         A venir : 
+        %br
         - @users_incoming.each do | user |
           - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
             = user.name.capitalize + ' ' + user.lastname.capitalize
