@@ -20,10 +20,14 @@
                     %th Email
                     %th Télephone
                 %tbody
-                  - list.sort_by{|user| user.lastname || ""}.each do | user |
+                  - list.sort_by{|user| user.lastname || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"}.each do | user |
                     %tr
-                      %td= user.lastname
-                      %td= user.name
+                      %td
+                        - if user.lastname
+                          = user.lastname.capitalize
+                      %td
+                        - if user.name
+                          = user.name.capitalize
                       %td= user.email
                       %td= user.phone
 

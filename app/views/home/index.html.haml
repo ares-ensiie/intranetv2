@@ -1,14 +1,40 @@
-.jumbotron
-  %h2 Bienvenue sur l'intranet de l'ENSIIE Strasbourg.
+%div{:class=>("col-sm-9" unless @users_today.empty? && @users_incoming.empty?)}
+  .jumbotron
+    %h2 Bienvenue sur l'intranet de l'ENSIIE Strasbourg.
 
-  %p
-    L'intranet est en version alpha pour l'instant, énormément de fonctionnalités sont manquantes. Ces fonctionnalitées se rajouteront dans les prochains jours.
+    %p
+      L'intranet est en version alpha pour l'instant, énormément de fonctionnalités sont manquantes. Ces fonctionnalitées se rajouteront dans les prochains jours.
 
-  %p
-    Si vous trouvez un bug sur l'intranet ou sur l'un des services ARES n'hésitez pas à le signaler sur
-    = link_to "le bugtracker.", "https://bugtracker.ares-ensiie.eu"
+    %p
+      Si vous trouvez un bug sur l'intranet ou sur l'un des services ARES n'hésitez pas à le signaler sur
+      = link_to "le bugtracker.", "https://bugtracker.ares-ensiie.eu"
 
-  %p
-    Si vous souhaitez participer au développement de l'intranet n'hésitez pas à consulter les sources
-    = link_to "ici.", "https://git.ares-ensiie.eu/ares/Intranet"
-    De plus si vous voulez participer aux services Ares (code, design, documentation) n'hésitez pas à harceler Gabriel ou Jonathan (ou envoyez un mail à ares@ares-ensiie.eu).
+    %p
+      Si vous souhaitez participer au développement de l'intranet n'hésitez pas à consulter les sources
+      = link_to "ici.", "https://git.ares-ensiie.eu/ares/Intranet"
+      De plus si vous voulez participer aux services Ares (code, design, documentation) n'hésitez pas à harceler Gabriel ou Jonathan (ou envoyez un mail à ares@ares-ensiie.eu).
+- if ! @users_today.empty? || ! @users_incoming.empty?
+  .col-sm-3
+    .birthday
+      %h3
+        Anniversaires
+        %i.fa.fa-birthday-cake.blue
+      - if ! @users_today.empty?
+        Aujourd'hui :
+        %br
+        - @users_today.each do | user | 
+          - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
+            = user.name.capitalize + ' ' + user.lastname.capitalize
+          - else
+            = user.uid
+          = ' a ' + (Date.current.year - user.birthday.year).to_s + ' ans'
+          %br
+
+      - if ! @users_incoming.empty?
+        %br A venir : 
+        - @users_incoming.each do | user |
+          - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
+            = user.name.capitalize + ' ' + user.lastname.capitalize
+          - else
+            = user.uid
+          = ' le ' + user.birthday.day.to_s + '/' + user.birthday.month.to_s
