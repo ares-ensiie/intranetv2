@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.group_by {|user| user.promo}
-    puts @users.to_json
+    @users = @users.sort_by {|promo, list| -promo}
   end
 
   def edit

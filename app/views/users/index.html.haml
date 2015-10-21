@@ -19,7 +19,7 @@
                     %th Prénom
                     %th Email
                     %th Télephone
-                - list.each do | user |
+                - list.sort_by{|user| user.lastname}.each do | user |
                   %tbody
                     %tr
                       %td= user.lastname
