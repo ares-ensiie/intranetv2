@@ -24,7 +24,8 @@ class UsersController < ApplicationController
         [:replace, :sn, @user.lastname],
         [:replace, :givenname, @user.name],
         [:replace, :mobile, @user.phone],
-        [:replace, :postalAddress, @user.address]
+        [:replace, :postalAddress, @user.address],
+        [:replace, :mail, @user.email]
       ]
       if ldap.modify :dn => results[0][:dn], :operations => operations
         flash[:notice] = "Informations mises a jour"
