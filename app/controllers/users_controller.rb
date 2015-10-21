@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :set_user, except: ["index"]
 
   def index
+    @users = User.all.group_by {|user| user.promo}
+    puts @users.to_json
   end
 
   def edit

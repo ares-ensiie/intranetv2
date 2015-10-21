@@ -1,1 +1,29 @@
-%h1 Hello World
+.row
+  .col-md-10.col-md-offset-1
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title Liste des étudiants
+      .panel-body
+        %ul.nav.nav-tabs{:role => "tablist"}
+          - @users.each do | promo, list |
+            %li{:role => "presentation", :class => ("active" unless current_user.promo != promo)}
+              %a{:href => "#promo-"+promo.to_s, "aria-controls" => "promo-"+promo.to_s, :role => "tab", "data-toggle"=>"tab"}
+                = promo.to_s
+        .tab-content
+          - @users.each do | promo, list |
+            .tab-pane{:role => "tabpanel", :id => "promo-"+promo.to_s, :class => ("active" unless current_user.promo != promo)}
+              %table.table.table-striped
+                %thead
+                  %tr
+                    %th Nom
+                    %th Prénom
+                    %th Email
+                    %th Télephone
+                - list.each do | user |
+                  %tbody
+                    %tr
+                      %td= user.lastname
+                      %td= user.name
+                      %td= user.email
+                      %td= user.phone
+
