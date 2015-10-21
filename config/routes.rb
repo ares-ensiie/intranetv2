@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions" }, only: :sessions
 
   root 'home#index'
+  get "/users" => "users#index", as: :users
 
   resources :users, only: [:edit, :update] do
     put "/password" => "users#update_password", as: :update_password
+    get "/password" => "users#edit_password", ad: :edit_password
   end
 
   get '/soon' => "home#coming_soon", as: :soon

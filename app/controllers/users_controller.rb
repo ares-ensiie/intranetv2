@@ -1,8 +1,14 @@
 require "net/ldap"
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: ["index"]
+
+  def index
+  end
 
   def edit
+  end
+
+  def edit_password
   end
 
   def update
@@ -70,7 +76,7 @@ class UsersController < ApplicationController
   protected
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || params[:user_id])
   end
 
   def init_ldap
