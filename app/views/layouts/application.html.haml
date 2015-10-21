@@ -14,7 +14,7 @@
       - if user_signed_in?
         - if !current_user.name || !current_user.lastname || ! current_user.phone || ! current_user.address || ! current_user.email
           .alert.alert-danger{:role => "alert"}
-            Votre profil est incomplet. Merci de le completer
+            Votre profil est incomplet. Merci de le compléter
             = link_to "en cliquant ici.", edit_user_path(current_user)
       = yield
 
