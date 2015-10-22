@@ -24,10 +24,10 @@
                     %tr
                       %td
                         - if user.lastname
-                          = user.lastname.capitalize
+                          = user.lastname.titleize
                       %td
                         - if user.name
-                          = user.name.capitalize
+                          = user.name.titleize
                       %td= user.email
                       %td= user.phone
 
