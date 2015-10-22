@@ -1,10 +1,14 @@
 .row
   .col-md-10.col-md-offset-1
     .panel.panel-primary
-      .panel-heading
-        %h3.panel-title Mes informations
+      .panel-heading.clearfix
+        %h3.panel-title.pull-left.with-button
+          Mes informations
+        %a.btn.btn-default.pull-right{:href => user_profile_path(@user)} Voir mon profil
+
       .panel-body
-        = bootstrap_form_for(@user) do |f|
+        = bootstrap_form_for(@user, multipart: true) do |f|
+          %h3 Informations personnelles
           .row
             .col-md-6.col-xs-12
               = f.text_field :lastname, {label: "Nom"}
@@ -18,4 +22,33 @@
               = f.date_field :birthday, {label: "Anniversaire"}
             .col-md-6.col-xs-12
               = f.text_field :address, {label: "Adresse"}
+            .col-md-6.col-xs-12
+              %label Avatar
+              .input-group
+                %span.input-group-btn
+                  %span.btn.btn-primary.btn-file
+                    Choisir un fichier
+                    = f.file_field :avatar, hide_label: true
+                %input.form-control{:readonly => "readonly", :type => "text"}/      
+            .col-md-6.col-xs-12
+              %label CV
+              .input-group
+                %span.input-group-btn
+                  %span.btn.btn-primary.btn-file
+                    Choisir un fichier
+                    = f.file_field :cv, hide_label: true
+                %input.form-control{:readonly => "readonly", :type => "text"}/
+          %hr
+          %h3 Réseaux sociaux
+          .row
+            .col-md-6.col-xs-12
+              = f.text_field :github, {label: "Github", placeholder: "https://github.com/ares"}
+            .col-md-6.col-xs-12
+              = f.text_field :site, {label: "Site perso", placeholder: "https://ares-ensiie.eu"}
+            .col-md-6.col-xs-12
+              = f.text_field :facebook, {label: "Facebook", placeholder: "https://www.facebook.com/ares"}
+            .col-md-6.col-xs-12
+              = f.text_field :linkedin, {label: "LinkedIn", placeholder: "https://fr.linkedin.com/pub/jonathan-hurter/83/5a9/15a"}
+            .col-md-6.col-xs-12
+              = f.text_field :twitter, {label: "Twitter", placeholder: "https://twitter.com/ares"}
           = f.submit "Valider"

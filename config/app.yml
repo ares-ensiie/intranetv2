@@ -12,3 +12,4 @@ aws:
   access_key_id: AKIAIPVH6UOBL23IZXBA
   secret_access_key: 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
   bucket: ares-intranet-storage
+  bucket-profiles: "ares-intranet-profiles"

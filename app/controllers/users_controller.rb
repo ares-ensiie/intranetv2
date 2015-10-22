@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.id == @user.id
-      @user.update_attributes(params.require(:user).permit(:id, :current_password, :password, :confirmation, :name, :lastname, :phone, :birthday, :address, :email))
+      @user.update_attributes(params.require(:user).permit(:id, :avatar, :cv, :name, :lastname, :phone, :birthday, :address, :email, :github, :site, :facebook, :linkedin, :twitter))
       ldap = init_ldap
       filter = Net::LDAP::Filter.eq("uid", @user.uid)
       treebase = LDAP_CONFIG["search_base"]
@@ -42,13 +42,11 @@ class UsersController < ApplicationController
           flash[:error] = "Erreur lors de la synchronisation avec LDAP"
         end
       end
-      redirect_to edit_user_path @user 
+      redirect_to edit_user_path @user
     else
       flash[:error] = "Ne touchez pas aux informations des autres !"
       redirect_to root_path
     end
-
-    
   end
 
   def update_password
@@ -86,6 +84,25 @@ class UsersController < ApplicationController
       flash[:error] = "Mot de passe doit contenir au moins 8 catactères"
     end
     redirect_to edit_user_path @user
+  end
+
+  def profile
+    @not_filled = 0
+    if ! @user.lastname || @user.lastname == ""
+      @not_filled += 1
+    end
+    if ! @user.name || @user.name == ""
+      @not_filled += 1
+    end
+    if ! @user.birthday
+      @not_filled += 1
+    end
+    if ! @user.email
+      @not_filled += 1
+    end
+    if ! @user.phone
+      @not_filled += 1
+    end
   end
 
   protected

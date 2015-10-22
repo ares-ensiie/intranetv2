@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update] do
     put "/password" => "users#update_password", as: :update_password
     get "/password" => "users#edit_password"
+    get "/profile"  => "users#profile", as: :profile
   end
 
   get '/soon' => "home#coming_soon", as: :soon
