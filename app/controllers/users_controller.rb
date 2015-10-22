@@ -88,6 +88,25 @@ class UsersController < ApplicationController
     redirect_to edit_user_path @user
   end
 
+  def profile
+    @not_filled = 0
+    if ! @user.lastname || @user.lastname == "" 
+      @not_filled += 1
+    end
+    if ! @user.name || @user.name == "" 
+      @not_filled += 1
+    end
+    if ! @user.birthday
+      @not_filled += 1
+    end
+    if ! @user.email
+      @not_filled += 1
+    end
+    if ! @user.phone
+      @not_filled += 1
+    end
+  end
+
   protected
 
   def set_user

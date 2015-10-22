@@ -1,0 +1,66 @@
+.row
+  .col-md-10.col-md-offset-1
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title 
+          Profil
+          - if @not_filled > 2
+            %span.label.label-warning.pull-right Profil incomplet
+      .panel-body
+        .row
+          .col-md-4.col-xs-12
+            photo
+            / %p.profile-links
+            /   - if @user.site && @user.site != ""
+            /     %a.btn.btn-sm.btn-default{:href => "#"} 
+            /       %i.fa.fa-globe
+            /   - if @user.github && @user.github != ""
+            /     %a.btn.btn-sm.btn-default{:href => "#"} 
+            /       %i.fa.fa-github-alt
+            /   - if @user.facebook && @user.facebook != ""
+            /     %a.btn.btn-sm.btn-default{:href => "#"} 
+            /       %i.fa.fa-facebook-f
+            /   - if @user.linkedin && @user.linkedin != ""
+            /     %a.btn.btn-sm.btn-default{:href => "#"} 
+            /       %i.fa.fa-linkedin
+            /   - if @user.cv && @user.cv != ""
+            /     %a.btn.btn-sm.btn-default{:href => "#"} 
+            /       %i.fa.fa-file-pdf-o
+          .col-md-8.col-xs-12
+            .col-md-4.right
+              %p.bold
+                Nom :
+              %p.bold
+                Prénom :
+              %p.bold
+                Date de naissance :
+              %p.bold
+                Adresse e-mail :
+              %p.bold
+                Téléphone :
+            .col-md-8
+              %p
+                - if @user.lastname && @user.lastname != ""
+                  = @user.lastname
+                - else
+                  Non renseigné 
+              %p
+                - if @user.name && @user.name != ""
+                  = @user.name
+                - else
+                  Non renseigné
+              %p
+                - if @user.birthday
+                  = @user.birthday.strftime("%d/%m/%Y")
+                - else
+                  Non renseigné
+              %p
+                - if @user.email
+                  = @user.email
+                - else
+                  Non renseigné
+              %p
+                - if @user.phone
+                  = @user.phone
+                - else
+                  Non renseigné
