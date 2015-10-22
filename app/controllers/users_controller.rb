@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(params.require(:user).permit(:id, :current_password, :password, :confirmation, :name, :lastname, :phone, :birthday, :address, :email))
+    @user.update_attributes(params.require(:user).permit(:id, :avatar, :cv, :name, :lastname, :phone, :birthday, :address, :email, :github, :site, :facebook, :linkedin, :twitter))
     ldap = init_ldap
     filter = Net::LDAP::Filter.eq("uid", @user.uid)
     treebase = LDAP_CONFIG["search_base"]

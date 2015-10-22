@@ -4,7 +4,8 @@
       .panel-heading
         %h3.panel-title Mes informations
       .panel-body
-        = bootstrap_form_for(@user) do |f|
+        = bootstrap_form_for(@user, multipart: true) do |f|
+          %h3 Informations personnelles
           .row
             .col-md-6.col-xs-12
               = f.text_field :lastname, {label: "Nom"}
@@ -18,4 +19,21 @@
               = f.date_field :birthday, {label: "Anniversaire"}
             .col-md-6.col-xs-12
               = f.text_field :address, {label: "Adresse"}
+            .col-md-6.col-xs-12
+              = f.file_field :avatar, {label: "Avatar"}
+            .col-md-6.col-xs-12
+              = f.file_field :cv, {label: "CV"}
+          %hr
+          %h3 Reseaux sociaux
+          .row
+            .col-md-6.col-xs-12
+              = f.text_field :github, {label: "Github", placeholder: "https://github.com/ares"}
+            .col-md-6.col-xs-12
+              = f.text_field :site, {label: "Site perso", placeholder: "https://ares-ensiie.eu"}
+            .col-md-6.col-xs-12
+              = f.text_field :facebook, {label: "Facebook", placeholder: "https://www.facebook.com/ares"}
+            .col-md-6.col-xs-12
+              = f.text_field :linkedin, {label: "LinkedIn", placeholder: "https://fr.linkedin.com/pub/jonathan-hurter/83/5a9/15a"}
+            .col-md-6.col-xs-12
+              = f.text_field :twitter, {label: "Twitter", placeholder: "https://twitter.com/ares"}
           = f.submit "Valider"

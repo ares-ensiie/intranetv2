@@ -33,7 +33,9 @@ gem 'fullcalendar.io-rails'
 gem 's3', '~> 0.3.23'
 gem 'phony_rails'
 
-
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0' # http://ruby.awsblog.com/post/TxFKSK2QJE6RPZ/Upcoming-Stable-Release-of-AWS-SDK-for-Ruby-Version-2
+gem 'fog'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -52,4 +54,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
 end
