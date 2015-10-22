@@ -19,6 +19,7 @@
                     %th Prénom
                     %th Email
                     %th Télephone
+                    %th Profil
                 %tbody
                   - list.sort_by{|user| user.lastname || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"}.each do | user |
                     %tr
@@ -30,4 +31,7 @@
                           = user.name.capitalize
                       %td= user.email
                       %td= user.phone
+                      %td
+                        %a.btn.btn-sm.btn-default{:href => user_profile_path(user)} 
+                          Voir profil
 
