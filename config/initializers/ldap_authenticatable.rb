@@ -18,8 +18,8 @@ module Devise
           if results.length == 1
             ldap.auth results[0][:dn], password
             if ldap.bind
-              user = User.find_or_create_by(uid: params[:user][:email])
-              user.update({uid: params[:user][:email], password: "dummydummy", promo: results[0][:roomnumber][0], lastname: results[0][:sn][0], name: results[0][:givenname][0], phone: results[0][:mobile][0], address: results[0][:postalAddress][0], email: results[0][:mail][0]})
+              user = User.find_or_create_by(uid: params[:user][:email].downcase)
+              user.update({uid: params[:user][:email].downcase, password: "dummydummy", promo: results[0][:roomnumber][0], lastname: results[0][:sn][0], name: results[0][:givenname][0], phone: results[0][:mobile][0], address: results[0][:postalAddress][0], email: results[0][:mail][0]})
               user.save!
               success!(user)
             else
