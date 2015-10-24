@@ -2,79 +2,98 @@
   .col-md-10.col-md-offset-1
     .panel.panel-primary
       .panel-heading
-        %h3.panel-title 
+        %h3.panel-title
           Profil
           - if @not_filled > 2
             %span.label.label-warning.pull-right Profil incomplet
       .panel-body
         .row
           .col-md-4.col-xs-12
-            %img.img-responsive{:src => @user.avatar.url}/
+            %img.img-responsive.center-block{:src => @user.avatar.url}/
             %p.profile-links
               - if @user.site && @user.site != ""
-                %a.btn.btn-sm.btn-default{:href => @user.site, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.site, :target =>"_blank"}
                   %i.fa.fa-globe
               - if @user.github && @user.github != ""
-                %a.btn.btn-sm.btn-default{:href => @user.github, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.github, :target =>"_blank"}
                   %i.fa.fa-github-alt
               - if @user.facebook && @user.facebook != ""
-                %a.btn.btn-sm.btn-default{:href => @user.facebook, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.facebook, :target =>"_blank"}
                   %i.fa.fa-facebook-f
               - if @user.linkedin && @user.linkedin != ""
-                %a.btn.btn-sm.btn-default{:href => @user.linkedin, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.linkedin, :target =>"_blank"}
                   %i.fa.fa-linkedin
               - if @user.twitter && @user.twitter != ""
-                %a.btn.btn-sm.btn-default{:href => @user.twitter, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.twitter, :target =>"_blank"}
                   %i.fa.fa-twitter
               - if @user.cv.exists?
-                %a.btn.btn-sm.btn-default{:href => @user.cv.url, :target =>"_blank"} 
+                %a.btn.btn-sm.btn-default{:href => @user.cv.url, :target =>"_blank"}
                   %i.fa.fa-file-pdf-o
           .col-md-8.col-xs-12
-            .col-md-4.right.col-xs-6
-              %p.bold
-                Nom :
-              %p.bold
-                Prénom :
-              %p.bold
-                Promotion :
-              %p.bold
-                Date de naissance :
-              %p.bold
-                Adresse e-mail :
-              %p.bold
-                Téléphone :
-              %p.bold
-                Adresse :
-            .col-md-8.col-xs-6
-              %p
-                - if @user.lastname && @user.lastname != ""
-                  = @user.lastname.titleize
-                - else
-                  Non renseigné 
-              %p
-                - if @user.name && @user.name != ""
-                  = @user.name.titleize
-                - else
-                  Non renseigné
-              %p
-                = @user.promo
-              %p
-                - if @user.birthday
-                  = @user.birthday.strftime("%d/%m/%Y")
-                - else
-                  Non renseigné
-              %p
-                - if @user.email
-                  = @user.email
-                - else
-                  Non renseigné
-              %p
-                - if @user.phone
-                  = @user.phone
-                - else
-                  Non renseigné
-              %p
-                - if @user.address && @user.address != ""
-                  = @user.address
-                - else
-                  Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Nom :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.lastname && @user.lastname != ""
+                    = @user.lastname.titleize
+                  - else
+                    Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Prénom :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.name && @user.name != ""
+                    = @user.name.titleize
+                  - else
+                    Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Promotion :
+              .col-md-8.col-xs-6
+                %p= @user.promo
+
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Date de naissance :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.birthday
+                    = @user.birthday.strftime("%d/%m/%Y")
+                  - else
+                    Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Adresse e-mail :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.email
+                    = @user.email
+                  - else
+                    Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Téléphone :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.phone
+                    = @user.phone
+                  - else
+                    Non renseigné
+            .row
+              .col-md-4.col-xs-6.right
+                %p.bold
+                  Adresse :
+              .col-md-8.col-xs-6
+                %p
+                  - if @user.address && @user.address != ""
+                    = @user.address
+                  - else
+                    Non renseigné

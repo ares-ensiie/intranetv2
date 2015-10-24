@@ -12,26 +12,27 @@
         .tab-content
           - @users.each do | promo, list |
             .tab-pane{:role => "tabpanel", :id => "promo-"+promo.to_s, :class => ("active" unless current_user.promo != promo)}
-              %table.table.table-striped
-                %thead
-                  %tr
-                    %th Nom
-                    %th Prénom
-                    %th Email
-                    %th Télephone
-                    %th Profil
-                %tbody
-                  - list.sort_by{|user| user.lastname || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"}.each do | user |
+              .table-responsive
+                %table.table.table-striped
+                  %thead
                     %tr
-                      %td
-                        - if user.lastname
-                          = user.lastname.titleize
-                      %td
-                        - if user.name
-                          = user.name.titleize
-                      %td= user.email
-                      %td= user.phone
-                      %td
-                        %a.btn.btn-sm.btn-default{:href => user_profile_path(user)}
-                          Voir profil
+                      %th Nom
+                      %th Prénom
+                      %th Email
+                      %th Télephone
+                      %th Profil
+                  %tbody
+                    - list.sort_by{|user| user.lastname || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"}.each do | user |
+                      %tr
+                        %td
+                          - if user.lastname
+                            = user.lastname.titleize
+                        %td
+                          - if user.name
+                            = user.name.titleize
+                        %td= user.email
+                        %td= user.phone
+                        %td
+                          %a.btn.btn-sm.btn-default{:href => user_profile_path(user)}
+                            Voir profil
 
