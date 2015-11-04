@@ -22,7 +22,7 @@
       - if ! @users_today.empty?
         Aujourd'hui :
         %br
-        - @users_today.each do | user | 
+        - @users_today.each do | user |
           - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
             = user.name.capitalize + ' ' + user.lastname.capitalize
           - else
@@ -31,7 +31,7 @@
           %br
 
       - if ! @users_incoming.empty?
-        A venir : 
+        A venir :
         %br
         - @users_incoming.each do | user |
           - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
@@ -39,3 +39,4 @@
           - else
             = user.uid
           = ' le ' + user.birthday.day.to_s + '/' + user.birthday.month.to_s
+          %br
