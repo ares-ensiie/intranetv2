@@ -5,35 +5,35 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "FVCTIICE Intranet", root_path, :class => "navbar-brand"
+      = link_to "ENSIIE Intranet", root_path, :class => "navbar-brand"
     .collapse.navbar-collapse#main-menu-collapse
       %ul.nav.navbar-nav
         %li
-          = link_to "Calendrier FVCTIICE", calendar_path
+          = link_to "Calendrier", calendar_path
         %li
 
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Services FVCTIICE
+            Vie de l'école
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to "FVCTIICE CHAT", "https://ragots.ares-ensiie.eu", :target => "_blank"
+              = link_to "Ragots", "https://ragots.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "PHOTOS DE FVCTIICE", "https://galeriie.ares-ensiie.eu", :target => "_blank"
+              = link_to "Galeriie", "https://galeriie.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "MANGE CHEZ FVCTIICE", "https://drinkiit.ares-ensiie.eu", :target => "_blank"
+              = link_to "Drinkiit", "https://drinkiit.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "LE BLOG DES ADORATEURS DE FVCTIICE", "https://blog.ares-ensiie.eu", :target => "_blank"
+              = link_to "Blog Ares", "https://blog.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "LISTE DES MEMBRES FVCTIICE", users_path
+              = link_to "Annuaire", users_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Outils
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to "ARCHIVES DE FVCTIICE",  base_files_path
+              = link_to "Archives",  base_files_path
             %li
               = link_to "Sage", "https://sage.ares-ensiie.eu", :target => "_blank"
             %li
@@ -43,9 +43,9 @@
             %li
               = link_to "Mailing lists", "https://sympa.ares-ensiie.eu/wws", :target => "_blank"
         %li
-          = link_to "FVCTIICE HELP", "https://wiki.ares-ensiie.eu", :target => "_blank"
+          = link_to "Documentation", "https://wiki.ares-ensiie.eu", :target => "_blank"
         %li
-          = link_to "RENDRE GLOIRE AU DICTATEUR SUPREME", "https://bugtracker.ares-ensiie.eu", :target => "_blank"
+          = link_to "Signaler un bug", "https://bugtracker.ares-ensiie.eu", :target => "_blank"
 
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
@@ -54,7 +54,7 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              = link_to "MA CARTE DE MEMBRE FVCTIICE", edit_user_path(current_user)
+              = link_to "Profil", edit_user_path(current_user)
             %li
               = link_to "Changer mon mot de passe", user_password_path(current_user)
             %li.divider{:role => "separator"}
@@ -64,4 +64,4 @@
               = link_to "Applications autorisées", oauth_authorized_applications_path
             %li.divider{:role => "separator"}
             %li
-              = link_to "VOTER FVCTIICE", destroy_user_session_path, :method => :delete
+              = link_to "Deconnexion", destroy_user_session_path, :method => :delete

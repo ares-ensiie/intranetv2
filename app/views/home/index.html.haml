@@ -1,26 +1,18 @@
 %div{:class=>("col-sm-9" unless @users_today.empty? && @users_incoming.empty?)}
   .jumbotron
-    %h2 Bienvenue sur l'intranet de FVCTIICE Strasbourg.
+    %h2 Bienvenue sur l'intranet de l'ENSIIE Strasbourg.
 
     %p
-      Il est impossible de trouver un bug. Cependant si vous doutez de la suprématie de FVTIICE vous pouvez toujours tenter votre chance sur
+      L'intranet est en version alpha pour l'instant, énormément de fonctionnalités sont manquantes. Ces fonctionnalitées se rajouteront dans les prochains jours.
+
+    %p
+      Si vous trouvez un bug sur l'intranet ou sur l'un des services ARES n'hésitez pas à le signaler sur
       = link_to "le bugtracker.", "https://bugtracker.ares-ensiie.eu"
 
     %p
-      Si vous aussi vous revez de votre futur dictateur suprême n'hésitez pas à contribuer à sa gloire en codant gratuitement
+      Si vous souhaitez participer au développement de l'intranet n'hésitez pas à consulter les sources
       = link_to "ici.", "https://git.ares-ensiie.eu/ares/Intranet"
-      De plus si vous voulez être d'une quelconque utilitée dans l'école. N'hésitez pas à supplier votre Dictateur Suprème pour pouvoir intégrer FVTIICE.
-    %h2 FVCTIICE NEWS
-    %hr
-    %div
-      %h3 On a croisé les Guerriiers en répétition, on est pas égoïste alors on partage
-      = image_tag("guayrier.jpg", :class=>"img-responsive")
-    %hr
-    %div
-      %h3
-        Barbariie a lancé sa campagne ! Rejoignez leur page facebook
-        = link_to "ici.", "https://www.facebook.com/Barbariie-1735768299969915", :target=>"_blank"
-      = image_tag("barbariie.jpg", :class=>"img-responsive")
+      De plus si vous voulez participer aux services Ares (code, design, documentation) n'hésitez pas à harceler Gabriel ou Jonathan (ou envoyez un mail à ares@ares-ensiie.eu).
 - if ! @users_today.empty? || ! @users_incoming.empty?
   .col-sm-3
     .birthday
