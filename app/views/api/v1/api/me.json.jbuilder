@@ -1,0 +1,17 @@
+json.uid @user.uid
+json.name @user.name
+json.lastname @user.lastname
+json.email @user.email
+json.promo @user.promo
+json.student @user.student
+json.phone @user.phone
+json.address @user.address
+json.avatar @user.avatar.url
+json.avatar_thumb @user.avatar.url(:thumb)
+json.cv @user.cv.url
+json.github @user.github
+json.site @user.site
+json.facebook @user.facebook
+json.twitter @user.twitter
+json.linkedin @user.linkedin
+json.updated_at @user.updated_at

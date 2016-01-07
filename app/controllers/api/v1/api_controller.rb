@@ -5,7 +5,7 @@ class Api::V1::ApiController < ApplicationController
 
   # GET /me.json
   def me
-    respond_with current_resource_owner
+    @user = current_resource_owner
   end
 
   private
