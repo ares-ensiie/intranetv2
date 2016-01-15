@@ -3,7 +3,6 @@ json.name @user.name
 json.lastname @user.lastname
 json.email @user.email
 json.promo @user.promo
-json.student @user.student
 json.phone @user.phone
 json.address @user.address
 json.avatar @user.avatar.url
