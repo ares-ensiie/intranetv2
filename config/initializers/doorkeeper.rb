@@ -6,7 +6,13 @@ Doorkeeper.configure do
   resource_owner_authenticator do
     # Put your resource owner authentication logic here.
     # Example implementation:
-    current_user || redirect_to(new_user_session_path)
+    if not current_user then
+      session[:user_return_to] = request.fullpath
+      redirect_to new_user_session_url
+    else
+      current_user
+    end
+    #  current_user || redirect_to(new_user_session_path)
     #User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
   end
 
