@@ -8,6 +8,7 @@
           = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             = f.text_field :email, {label: "Ares Id", autofocus: true}
             = f.password_field :password, {label: "Mot de passe", autocomplete: "off"}
+
             - if devise_mapping.rememberable?
               .field
                 = f.check_box :remember_me, label: "Se souvenir de moi"
