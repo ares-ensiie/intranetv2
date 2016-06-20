@@ -36,6 +36,8 @@ gem 'phony_rails'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0' # http://ruby.awsblog.com/post/TxFKSK2QJE6RPZ/Upcoming-Stable-Release-of-AWS-SDK-for-Ruby-Version-2
 gem 'fog'
+gem "skylight"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
