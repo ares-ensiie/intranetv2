@@ -263,6 +263,8 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rollbar (2.11.2)
+      multi_json
     ruby_parser (3.6.6)
       sexp_processor (~> 4.1)
     s3 (0.3.23)
@@ -333,6 +335,7 @@ DEPENDENCIES
   pg
   phony_rails
   rails (= 4.2.3)
+  rollbar
   s3 (~> 0.3.23)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
