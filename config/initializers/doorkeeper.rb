@@ -99,13 +99,13 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  # grant_flows %w(authorization_code client_credentials)
+  grant_flows %w(authorization_code client_credentials implicit)
 
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
   # For example if dealing with a trusted application.
   skip_authorization do |resource_owner, client|
-    client.super_app?
+    client.application.super_app?
   end
 
   # WWW-Authenticate Realm (default "Doorkeeper").

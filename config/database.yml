@@ -8,10 +8,11 @@ default: &default
 
   adapter: postgresql
   encoding: unicode
-  username: intranet
-  password: intranet
+  host: <%= ENV['PG_HOST'] || "localhost" %>
+  username: <%= ENV['PG_USERNAME'] || "intranet" %>
+  password: <%= ENV['PG_PASSWORD'] || "intranet" %>
+
   timeout: 5000
-  host: localhost
   port: 5432
   pool: 10
 

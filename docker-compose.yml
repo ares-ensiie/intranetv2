@@ -8,6 +8,11 @@ app:
     links:
     - postgres
 
+    environment:
+      PG_HOST: postgres
+      PG_USERNAME: postgres
+      PG_PASSWORD: 
+
 postgres:
     image: postgres:9.4
     ports:
