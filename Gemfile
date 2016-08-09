@@ -38,6 +38,7 @@ gem 'aws-sdk', '< 2.0' # http://ruby.awsblog.com/post/TxFKSK2QJE6RPZ/Upcoming-St
 gem 'fog'
 gem "skylight"
 gem 'newrelic_rpm'
+gem "rollbar"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
