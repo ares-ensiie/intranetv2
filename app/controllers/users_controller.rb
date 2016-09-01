@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-   # if current_user.id != @user.id
-      flash[:error] = "Ne touchez pas aux informations des autres !"
-      redirect_to root_path
-   # end
+   if current_user.id != @user.id
+      # flash[:error] = "Ne touchez pas aux informations des autres !"
+      # redirect_to root_path
+   end
   end
 
   def edit_password
