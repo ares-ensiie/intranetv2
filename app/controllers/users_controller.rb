@@ -8,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user.id != @user.id
+   # if current_user.id != @user.id
       flash[:error] = "Ne touchez pas aux informations des autres !"
       redirect_to root_path
-    end
+   # end
   end
 
   def edit_password
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.id == @user.id
+    #if current_user.id == @user.id
       @user.update_attributes(params.require(:user).permit(:id, :avatar, :cv, :name, :lastname, :phone, :birthday, :address, :email, :github, :site, :facebook, :linkedin, :twitter))
       ldap = init_ldap
       filter = Net::LDAP::Filter.eq("uid", @user.uid)
@@ -43,10 +43,10 @@ class UsersController < ApplicationController
         end
       end
       redirect_to edit_user_path @user
-    else
-      flash[:error] = "Ne touchez pas aux informations des autres !"
-      redirect_to root_path
-    end
+    #else
+    #  flash[:error] = "Ne touchez pas aux informations des autres !"
+    #  redirect_to root_path
+    #end
   end
 
   def update_password
