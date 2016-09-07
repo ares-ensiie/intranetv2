@@ -9,8 +9,8 @@
 
 ## Running in development mode using docker
 * `docker-compose build`     
-If you get an error 'Couldn't connect to Docker daemon', run `usermod -aG docker ${USER}` then login/logout (or reboot)   
-* In order to create the database, make sure you have a user called 'intranet', if not, create it by using the following commands :
+If you get an error "Couldn't connect to Docker daemon" even if you ran `sudo service docker start`, run `usermod -aG docker ${USER}` then login/logout (or reboot)   
+* In order to create the database, make sure you have a user called 'intranet'. If not, create it by using the following commands :
     * `sudo -u postgres -i`
     * `pgsql`
     * `create user intranet createdb password 'intranet';`
