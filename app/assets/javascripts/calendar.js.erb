@@ -61,4 +61,10 @@ $(document).ready(function() {
       $(this).toggleClass("btn-success")  // On permute la classe du bouton ici
     }
   })
+
+  $('#export-button').popover({
+    'title': "Exporter les calendriers",
+    'html': true, 
+    'content': $('#export-menu-contents').html()
+  })
 });

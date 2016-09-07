@@ -29,8 +29,15 @@
             .btn-group
               %a.btn.btn-default.calendar-button.bde{:href=>"#", :cal_id=>"bde"}
                 BDE
+            .btn-group.pull-right
+              %button#export-button.btn.btn-primary{'data-container' => 'body', 'data-toggle' => 'popover', 'data-placement' => 'bottom'}
+                Exporter
+                %span.caret
       .panel-body
         .row
           #calendar
+#export-menu-contents.hidden
+  %p
+    Lorem ipsum blablabla...
 :javascript
   window.current_user_promo = #{current_user.promo}
