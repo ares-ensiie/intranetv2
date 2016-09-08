@@ -33,7 +33,5 @@ module Intranet
       # Only Authorized Applications
       Doorkeeper::AuthorizedApplicationsController.layout "application"
     end
-    config.time_zone = 'Europe/Paris'
-    config.active_record.default_timezone = 'Europe/Paris'
   end
 end
