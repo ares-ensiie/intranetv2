@@ -1,16 +1,6 @@
 $(document).ready(function() {
 
   k = <%= APP_CONFIG["calendar"].to_json %>
-  cal_color = { // couleur de fond pour les évènements de chaque calendrier
-    "bde":"#8a00ab",
-    "1a":"#006400",
-    "2a":"#ff8000",
-    "2ao":"#ff0000",
-    "2ailc":"#ff6366",
-    "2aisi":"#ff4400",
-    "3a":"#00008b",
-    "3ao":"00008b"
-  }
 
   $('#calendar').fullCalendar({
     minTime:'08:00:00', // debut du calendrier à 8h du matin
@@ -26,7 +16,7 @@ $(document).ready(function() {
     googleCalendarApiKey: k["key"]  // clé de l'API google calendar
   })
 
-
+/*
   promo = window.current_user_promo  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
   if(promo == 2017){  // si c'est la promo 2016 (3a)
   $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], color: cal_color["3a"]}) // on ajoute leur tronc commun au calendrier
@@ -60,7 +50,8 @@ $(document).ready(function() {
       }
       $(this).toggleClass("btn-success")  // On permute la classe du bouton ici
     }
-  })
+    })
+*/
 
   $('#export-button').popover({
     'title': "Exporter les calendriers",

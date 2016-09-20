@@ -19,7 +19,7 @@ calendar:
     1A:
       cours: 
         id: 169u8pr5vrf296hmigiehltr8o@group.calendar.google.com
-        text: "1ère année"
+        text: "Cours"
         color: "#006400"
         public:
           html: ""
@@ -27,7 +27,7 @@ calendar:
     2A:
       cours: 
         id: cmr96jsu22k4qs7mh0akh6u9vc@group.calendar.google.com
-        text: "2eme année"
+        text: "Cours"
         color: "#ff8000"
         public:
           html: "https://www.google.com/calendar/embed?src=cmr96jsu22k4qs7mh0akh6u9vc%40group.calendar.google.com&ctz=Europe/Paris"
@@ -56,7 +56,7 @@ calendar:
     3A:
       cours: 
         id: k9lf59hq805o5enoo01mhjv9m8@group.calendar.google.com
-        text: "3eme année"
+        text: "Cours"
         color: "#2872d1"
         public:
           html: ""
@@ -85,7 +85,7 @@ calendar:
     BDE:
       evts: 
         id: lhonilnm3lvk7o4g1d556pf1hk@group.calendar.google.com
-        text: "BDE"
+        text: "Évènements"
         color: "#9a0041"
         public:
           html: ""
