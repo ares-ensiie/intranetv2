@@ -34,7 +34,7 @@ calendar:
           ical: "https://www.google.com/calendar/ical/cmr96jsu22k4qs7mh0akh6u9vc%40group.calendar.google.com/public/basic.ics"
       options: 
         id: 0n50q3l187pmjujgooeuq1ajmo@group.calendar.google.com
-        text: "options"
+        text: "Options"
         color: "#ff0000"
         public:
           html: "https://www.google.com/calendar/embed?src=0n50q3l187pmjujgooeuq1ajmo%40group.calendar.google.com&ctz=Europe/Paris"
@@ -63,7 +63,7 @@ calendar:
           ical: ""
       options: 
         id: ao4pukmvs5gdh0nci38akoc0n8@group.calendar.google.com
-        text: "options"
+        text: "Options"
         color: "#00008b"
         public:
           html: ""
