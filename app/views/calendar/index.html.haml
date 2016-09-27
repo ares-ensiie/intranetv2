@@ -7,7 +7,7 @@
         .row
           .btn-toolbar-sm
             - @calendars.each_key do |g|
-              .btn-group.cal-group{:data => {'cal-group' => g}}
+              .btn-group.btn-group-sm.cal-group{:data => {'cal-group' => g}}
                 %button.btn.btn-primary.cal-group-button= g
                 - @calendars[g].each do |k, c|
                   %button.btn.btn-default.cal-button{:type => 'button', 
@@ -16,7 +16,7 @@
                       :key => k,
                       :cal => c}}= c['text']
             .btn-group.pull-right
-              %button#export-button.btn.btn-primary{'data-container' => 'body', 
+              %button#export-button.btn.btn-primary.btn-sm{'data-container' => 'body', 
                 'data-toggle' => 'popover', 
                 'data-placement' => 'bottom'}
                 Exporter
