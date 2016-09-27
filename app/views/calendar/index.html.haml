@@ -35,5 +35,5 @@
             %tr.cal-export-item{:data => {:key => ck}}
               %td.text= c['text']
               %td.links
-                = link_to "html", c['public']['html'], {class: 'btn btn-xs btn-default'}
+                = link_to "html", c['public']['html'], {class: 'btn btn-xs btn-default', target: '_blank'}
                 = link_to "ical", c['public']['ical'], {class: 'btn btn-xs btn-default'}
