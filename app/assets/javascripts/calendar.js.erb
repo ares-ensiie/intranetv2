@@ -16,6 +16,8 @@ $(document).ready(function() {
       googleCalendarApiKey: $('#page-data').data('key')  // clé de l'API google calendar
   });
 
+  //--- Barre d'outils de sélection des calendriers
+
   $('.cal-button').click(function() {
       if (!$(this).hasClass('active')) {
           calendar.fullCalendar(
@@ -29,11 +31,14 @@ $(document).ready(function() {
   });
 
   $('.cal-group-button').click(function () {
+    // on désactive tous les calendriers et on active ceux dans le groupe du bouton cliqué
     $('.cal-button.active').click();
     $(this).siblings('.cal-button').click();
   });
 
   $('.cal-button[data-cal-default]').click();
+
+  //--- Menu exporter
 
   $('#export-button').popover({
       'title': "Exporter les calendriers",
