@@ -28,6 +28,13 @@ $(document).ready(function() {
       }
   });
 
+  $('.cal-group-button').click(function () {
+    $('.cal-button.active').click();
+    $(this).siblings('.cal-button').click();
+  });
+
+  $('.cal-button[data-cal-default]').click();
+
   $('#export-button').popover({
       'title': "Exporter les calendriers",
       'html': true, 
