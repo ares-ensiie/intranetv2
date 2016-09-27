@@ -14,6 +14,7 @@
                     :autocomplete => 'off', 
                     :data => {:toggle => 'button', 
                       :key => k,
+                      :group => g,
                       :cal => c}}= c['text']
             .btn-group.pull-right
               %button#export-button.btn.btn-primary.btn-sm{'data-container' => 'body', 
@@ -25,5 +26,14 @@
         .row
           #calendar
 #export-menu-contents.hidden
-  %p
-    Lorem ipsum blablabla...
+  %dl
+    - @calendars.each do |gk, g|
+      %dt{:data => {:group => gk}}= gk
+      %dd
+        %table
+          -g.each do |ck, c|
+            %tr.cal-export-item{:data => {:key => ck}}
+              %td.text= c['text']
+              %td.links
+                = link_to "html", c['public']['html']
+                = link_to "ical", c['public']['ical']

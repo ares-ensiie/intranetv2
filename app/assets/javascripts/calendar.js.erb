@@ -38,6 +38,15 @@ $(document).ready(function() {
   $('#export-button').popover({
       'title': "Exporter les calendriers",
       'html': true, 
-      'content': $('#export-menu-contents').html()
+      'content': '<div id="export-menu">' + $('#export-menu-contents').html() + '</div>'
   });
+
+  $('#export-button').click( function() {
+    $('#export-menu dt, #export-menu .cal-export-item').hide();
+    $('.cal-button.active').each(function(i, e) {
+      var group = $('#export-menu dt[data-group='+$(this).data('group')+']');
+      group.show();
+      $('.cal-export-item[data-key='+$(this).data('key')+']', group.next()).show();
+    })
+  })
 });
