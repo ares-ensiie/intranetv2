@@ -1,10 +1,16 @@
 class CalendarController < ApplicationController
 
   def index
-    @cur_prom = current_user.promo
     @calendars = APP_CONFIG['calendar']['list']
     @key = APP_CONFIG['calendar']['key']
-    @default = APP_CONFIG['calendar']['default']
+    
+    d = APP_CONFIG['calendar']['default']
+    [d['all'], d[current_user.promo]].compact.each { |e|
+        e.each { |gk, g|
+            g.each { |c|
+                @calendars[gk][c]['default'] = 'on'
+            }
+        }
+    }
   end
-
 end

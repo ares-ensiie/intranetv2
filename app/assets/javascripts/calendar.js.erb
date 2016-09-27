@@ -1,61 +1,36 @@
 $(document).ready(function() {
 
-  k = <%= APP_CONFIG["calendar"].to_json %>
+  let calendar = $('#calendar');
 
-  $('#calendar').fullCalendar({
-    minTime:'08:00:00', // debut du calendrier à 8h du matin
-    height:'auto', // hauteur automatique donc pas de scrollbar dans le calendrier
-    firstDay:1, //premier jour de la semaine => Lundi
-    defaultView:'agendaWeek', // par défaut on affiche un agenda semaine
-    timezone: 'Europe/Paris', // on utilise le fuseau horraire de paris
-    header:{ // Mise en forme de l entete
-      left:'prevYear,prev,next,nextYear,today', // à gauche: les boutons de navigation
-      center:'title', // au milieu: le titre
-      right:'month,agendaWeek,agendaDay' // à droite: les boutons de type de vue
-    },
-    googleCalendarApiKey: k["key"]  // clé de l'API google calendar
-  })
+  calendar.fullCalendar({
+      minTime:'08:00:00', // debut du calendrier à 8h du matin
+      height:'auto', // hauteur automatique donc pas de scrollbar dans le calendrier
+      firstDay:1, //premier jour de la semaine => Lundi
+      defaultView:'agendaWeek', // par défaut on affiche un agenda semaine
+      timezone: 'Europe/Paris', // on utilise le fuseau horraire de paris
+      header:{ // Mise en forme de l entete
+          left:'prevYear,prev,next,nextYear,today', // à gauche: les boutons de navigation
+          center:'title', // au milieu: le titre
+          right:'month,agendaWeek,agendaDay' // à droite: les boutons de type de vue
+      },
+      googleCalendarApiKey: $('#page-data').data('key')  // clé de l'API google calendar
+  });
 
-/*
-  promo = window.current_user_promo  // on récupère la promo de l'utilisateur courrant (parrée en variable globale dans le controller)
-  if(promo == 2017){  // si c'est la promo 2016 (3a)
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3a"], color: cal_color["3a"]}) // on ajoute leur tronc commun au calendrier
-  $(".3a").toggleClass("btn-success") // on change la couleur du bouton
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["3ao"], color: cal_color["3ao"]}) // on ajoute leurs options au calendrier
-  $(".3ao").toggleClass("btn-success") // on change la couleur du bouton
-  }
-  else if (promo == 2018) { // si c'est la promo 2016 (2a)
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2a"], color: cal_color["2a"]}) // on ajoute leur tronc commun au calendrier
-  $(".2a").toggleClass("btn-success") // on change la couleur du bouton
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["2ao"], color: cal_color["2ao"]}) // on ajoute leurs options au calendrier
-  $(".2ao").toggleClass("btn-success")  // on change la couleur du bouton
-  }
-  else if (promo == 2019) { // si c'est la promo 2016 (1a et 0a pour ceux qui n'ont pas fait leur WEI)
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["1a"], color: cal_color["1a"]}) // on ajoute leur tronc commun au calendrier
-  $(".1a").toggleClass("btn-success") // on change la couleur du bouton
-  }
-  $('#calendar').fullCalendar('addEventSource', {googleCalendarId: k["bde"], color: cal_color["bde"]}) // on ajoute le calendrier BDE dans tous les cas au calendrier
-  $(".bde").toggleClass("btn-success")  // on change la couleur du bouton
-
-
-  $(".calendar-button").click(function(){
-    calendar_name = $(this).attr("cal_id")  // nom de la classe (1a, 2a, 2ao, 3a, 3ao, bde)
-    calendar_id = k[calendar_name]  // identifiant google du calendrier
-    if ($(this).hasClass("calendar-button")){ //si c'est un bouton de choix de calendrier
-      if ($(this).hasClass("btn-success")){ // si la source est déja affichée
-        $('#calendar').fullCalendar('removeEventSource', calendar_id) // retire une source de calendrier
+  $('.cal-button').click(function() {
+      if (!$(this).hasClass('active')) {
+          calendar.fullCalendar(
+              'addEventSource',
+              { googleCalendarId: $(this).data('calId'), 
+                color: $(this).data('calColor') }
+          );
+      } else {
+          calendar.fullCalendar('removeEventSource', $(this).data('calId'));
       }
-      else{ //si la source n'est pas déjà affichée
-        $('#calendar').fullCalendar('addEventSource', {googleCalendarId: calendar_id, color: cal_color[calendar_name]})  // ajoute une source de calendrier
-      }
-      $(this).toggleClass("btn-success")  // On permute la classe du bouton ici
-    }
-    })
-*/
+  });
 
   $('#export-button').popover({
-    'title': "Exporter les calendriers",
-    'html': true, 
-    'content': $('#export-menu-contents').html()
-  })
+      'title': "Exporter les calendriers",
+      'html': true, 
+      'content': $('#export-menu-contents').html()
+  });
 });

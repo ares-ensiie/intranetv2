@@ -2,7 +2,7 @@ calendar:
   key: AIzaSyD7A3BcJKsHCB7XEoGxQ5BGIhYhF0P42fA
   default:
     all:
-      bde:
+      BDE:
         - evts
     2019:
       1A:
