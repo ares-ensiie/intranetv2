@@ -1,14 +1,13 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   config.warden do |manager|
     manager.default_strategies(:scope => :user).unshift :ldap_authenticatable
   end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '217487411a42467e384616d37caf8a17acd95503129974c5c743912b98517dd636ccb6eb6ce119834d0c6e1f11140e5691ddf2949233bf3674028bdde18e9876'
+  # config.secret_key = '007698b6032c70657eb479ae8db5d784cbe833cddde9ce370886c616f0eb8933d9548392c448c0fd8eb9635d1580d5fa5b53130eb37198f79f0e53e2de517456'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -101,7 +100,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '2d27381d0783d34585e65f41adfd78343cf7f511a904ba40be27d2822dbd76e509024a7c8a4a52b08af821893ff2e472ab05a01154980c5f73fbfc0a8d4d6bf3'
+  # config.pepper = 'a237eabf3a537e33c8e0778e68205bef961f4305f73accac2954015b19594d7820f14f6f1efdc981ef37fc280b1b8cd58fe1540fe8095071a0948c58089dbb76'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
