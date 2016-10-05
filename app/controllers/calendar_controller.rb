@@ -4,11 +4,11 @@ class CalendarController < ApplicationController
     @calendars = APP_CONFIG['calendar']['list']
     @key = APP_CONFIG['calendar']['key']
     
-    d = APP_CONFIG['calendar']['default']
-    [d['all'], d[current_user.promo]].compact.each { |e|
-        e.each { |gk, g|
-            g.each { |c|
-                @calendars[gk][c]['default'] = 'on'
+    default_cals = APP_CONFIG['calendar']['default']
+    [default_cals['all'], default_cals[current_user.promo]].compact.each { |elt|
+        elt.each { |group_key, group|
+            group.each { |cal|
+                @calendars[group_key][cal]['default'] = 'on'
             }
         }
     }

@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   $('#export-button').click( function() {
     $('#export-menu dt, #export-menu .cal-export-item').hide();
-    $('.cal-button.active').each(function(i, e) {
+    $('.cal-button.active').each(function(idx, element) {
       var group = $('#export-menu dt[data-group='+$(this).data('group')+']');
       group.show();
       $('.cal-export-item[data-key='+$(this).data('key')+']', group.next()).show();
