@@ -37,7 +37,7 @@ module Intranet
     config.active_record.default_timezone = :local
 
     config.action_mailer.default_url_options = { 
-      :host => 'ares-ensiie.eu' 
+      :host => ENV['MAILGUN_DOMAIN'] || 'localhost:3000' 
     } 
     config.action_mailer.delivery_method = :smtp 
     config.action_mailer.perform_deliveries = true 

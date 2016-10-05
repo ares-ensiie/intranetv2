@@ -81,7 +81,7 @@ class UsersController < ApplicationController
         flash[:error] = "Les mots de passe ne correspondent pas."
       end
     else
-      flash[:error] = "Mot de passe doit contenir au moins 8 catactères"
+      flash[:error] = "Le mot de passe doit contenir au moins 8 caractères"
     end
     redirect_to edit_user_path @user
   end
@@ -143,9 +143,11 @@ class UsersController < ApplicationController
                 u.save
                 flash[:notice] = "Mot de passe changé"
               else
+                Rollbar.error("Erreur LDAP : impossible de changer le mot de passe") 
                 flash[:error] = "Impossible de changer le mot de passe. Ceci est un bug, merci de le signaler."
               end
             else
+              Rollbar.error("Erreur LDAP : utilisateur introuvable") 
               flash[:error] = "Utilisateur introuvable. Ceci est un bug, merci de le signaler."
             end
           else
@@ -153,12 +155,12 @@ class UsersController < ApplicationController
           end
         else
           flash[:error] = "Les mots de passe ne correspondent pas."
-          redirect_to '/users/reset_password?reset_password_token=' + params[:token]
+          redirect_to reset_password_path(:reset_password_token => params[:token])
           return
         end
       else
-        flash[:error] = "Mot de passe doit contenir au moins 8 catactères"
-        redirect_to '/users/reset_password?reset_password_token=' + params[:token]
+        flash[:error] = "Le mot de passe doit contenir au moins 8 caractères"
+        redirect_to reset_password_path(:reset_password_token => params[:token])
         return
       end
       redirect_to forgotten_password_path

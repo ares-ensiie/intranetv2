@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "/users/forgotten_password" => "users#forgotten_password", as: :forgotten_password
   post "/users/send_reset_instructions" => "users#send_reset_instructions", as: :send_reset_instructions
-  get "/users/reset_password" => "users#reset_password", as: :edit_password
+  get "/users/reset_password" => "users#reset_password", as: :reset_password
   post "/users/modify_password" => "users#modify_password", as: :modify_password
   
   resources :users, only: [:edit, :update] do
