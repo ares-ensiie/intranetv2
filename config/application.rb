@@ -35,20 +35,5 @@ module Intranet
     end
     config.time_zone = 'Europe/Paris'
     config.active_record.default_timezone = :local
-
-    config.action_mailer.default_url_options = { 
-      :host => ENV['MAILGUN_DOMAIN'] || 'localhost:3000' 
-    } 
-    config.action_mailer.delivery_method = :smtp 
-    config.action_mailer.perform_deliveries = true 
-    config.action_mailer.default :charset => "utf-8" 
-    ActionMailer::Base.smtp_settings = { 
-      :authentication => :plain,
-      :address => "smtp.mailgun.org", 
-      :port => 587, 
-      :domain => ENV['MAILGUN_DOMAIN'] || 'sandboxea501c9c020041a7ae37953a23e0a476.mailgun.org', 
-      :user_name => ENV['MAILGUN_USER'] || 'postmaster@sandboxea501c9c020041a7ae37953a23e0a476.mailgun.org', 
-      :password => ENV['MAILGUN_PWD'] || 'bbd002600c6b8cb2cebaa5a107f1644e' 
-    }
   end
 end

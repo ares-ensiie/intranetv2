@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         treebase = LDAP_CONFIG["search_base"]
 
         results = ldap.search( :base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
-        if results.length == 1
+        if !results.nil? && results.length == 1
           ldap.auth results[0][:dn], params[:current_password]
           if ldap.bind
             operations = [
@@ -133,7 +133,7 @@ class UsersController < ApplicationController
             treebase = LDAP_CONFIG["search_base"]
 
             results = ldap.search( :base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
-            if results.length == 1
+            if !results.nil? && results.length == 1
               operations = [
                 [:replace, :userPassword, "{md5}"+Base64.encode64(Digest::MD5.digest(params[:password])).chomp!]
               ]
