@@ -94,11 +94,8 @@ class UsersController < ApplicationController
       user = params[:user]
       u = User.where('email = ? OR uid = ?', user, user).first
       if !u.nil?
-        if !u.banned
-          u.send_reset_password_instructions
-          flash[:notice] = "Un mail contenant les instructions vous a été envoyé !"
-        else
-          flash[:error] = "Merci de payer votre cotisation pour pouvoir à nouveau utiliser les services ARES"
+        u.send_reset_password_instructions
+        flash[:notice] = "Un mail contenant les instructions vous a été envoyé !"
       else
         flash[:error] = "Utilisateur inconnu"
       end
