@@ -1,6 +1,6 @@
 require "net/ldap"
 class UsersController < ApplicationController
-  before_action :set_user, except: ["index"]
+  before_action :set_user, except: ["index", :forgotten_password, :send_reset_instructions, :reset_password, :modify_password]
 
   def index
     @users = User.all.group_by {|user| user.promo}
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         treebase = LDAP_CONFIG["search_base"]
 
         results = ldap.search( :base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
-        if results.length == 1
+        if !results.nil? && results.length == 1
           ldap.auth results[0][:dn], params[:current_password]
           if ldap.bind
             operations = [
@@ -78,12 +78,95 @@ class UsersController < ApplicationController
           flash[:error] = "Utilisateur introuvable. Ceci est un bug, merci de le signaler."
         end
       else
-        flash[:error] = "Les mots de passes ne correspondent pas."
+        flash[:error] = "Les mots de passe ne correspondent pas."
       end
     else
-      flash[:error] = "Mot de passe doit contenir au moins 8 catactères"
+      flash[:error] = "Le mot de passe doit contenir au moins 8 caractères"
     end
     redirect_to edit_user_path @user
+  end
+
+  def forgotten_password
+  end
+
+  def send_reset_instructions
+    if params[:user] != ""
+      user = params[:user]
+      u = User.where('email = ? OR uid = ?', user, user).first
+      if !u.nil?
+        u.send_reset_password_instructions
+        flash[:notice] = "Un mail contenant les instructions vous a été envoyé !"
+      else
+        flash[:error] = "Utilisateur inconnu"
+      end
+    else
+      flash[:error] = "Veuillez entrer un nom d'utilisateur ou une adresse mail"
+    end
+    redirect_to forgotten_password_path
+  end
+
+  def reset_password
+    if !params[:reset_password_token].nil?
+      u = User.where('reset_password_token = ?', params[:reset_password_token]).first
+      if !u.nil?
+        if !u.reset_password_period_valid?
+          flash[:error] = "Ce token n'est plus valide"
+          redirect_to forgotten_password_path
+        end
+      else
+        flash[:error] = "Ce token est inconnu"
+        redirect_to forgotten_password_path
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
+  def modify_password
+    if !params[:token].nil?
+      if params[:password].length > 7
+        if params[:password] == params[:confirmation]
+          u = User.where('reset_password_token = ?', params[:token]).first
+          if !u.nil?
+            ldap = init_ldap
+            filter = Net::LDAP::Filter.eq( "uid", u.uid)
+            treebase = LDAP_CONFIG["search_base"]
+
+            results = ldap.search( :base => treebase, :filter => filter, :scope => Net::LDAP::SearchScope_WholeSubtree)
+            if !results.nil? && results.length == 1
+              operations = [
+                [:replace, :userPassword, "{md5}"+Base64.encode64(Digest::MD5.digest(params[:password])).chomp!]
+              ]
+              if ldap.modify :dn => results[0][:dn], :operations => operations
+                u.reset_password_token = nil
+                u.reset_password_sent_at = nil
+                u.save
+                flash[:notice] = "Mot de passe changé"
+              else
+                Rollbar.error("Erreur LDAP : impossible de changer le mot de passe") 
+                flash[:error] = "Impossible de changer le mot de passe. Ceci est un bug, merci de le signaler."
+              end
+            else
+              Rollbar.error("Erreur LDAP : utilisateur introuvable") 
+              flash[:error] = "Utilisateur introuvable. Ceci est un bug, merci de le signaler."
+            end
+          else
+            flash[:error] = "Ce token n'existe pas."
+          end
+        else
+          flash[:error] = "Les mots de passe ne correspondent pas."
+          redirect_to reset_password_path(:reset_password_token => params[:token])
+          return
+        end
+      else
+        flash[:error] = "Le mot de passe doit contenir au moins 8 caractères"
+        redirect_to reset_password_path(:reset_password_token => params[:token])
+        return
+      end
+      redirect_to forgotten_password_path
+    else
+      redirect_to root_path
+    end
   end
 
   def profile

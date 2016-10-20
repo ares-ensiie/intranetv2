@@ -81,4 +81,17 @@ Rails.application.configure do
     :storage => :s3,
     :url => ':s3_domain_url'
   }
+
+  config.action_mailer.default_url_options = { 
+      :host => 'ares-ensiie.eu' 
+  } 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true 
+  config.action_mailer.default :charset => "utf-8" 
+  ActionMailer::Base.smtp_settings = {
+    :address => "10.0.0.2", 
+    :port => 25, 
+    :domain => "ares-ensiie.eu",
+    :openssl_verify_mode => "none"
+  }
 end
