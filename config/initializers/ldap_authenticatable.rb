@@ -21,6 +21,9 @@ module Devise
               user = User.find_or_create_by(uid: results[0][:uid][0])
               user.update({uid: results[0][:uid][0], password: "dummydummy", promo: results[0][:roomnumber][0], lastname: results[0][:sn][0], name: results[0][:givenname][0], phone: results[0][:mobile][0], address: results[0][:postalAddress][0], email: results[0][:mail][0]})
               user.save!
+              if params[:user][:remember_me].present?
+                remember_me(user)
+              end
               success!(user)
             else
               fail(:invalid_login)
