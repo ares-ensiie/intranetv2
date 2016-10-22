@@ -1,3 +1,4 @@
+#page-data.hidden{:data => {:key => @key}}
 .row{:style => "overflow-y: auto;"}
   .col-xs-1
   .col-xs-10
@@ -5,32 +6,34 @@
       .panel-body.text-center
         .row
           .btn-toolbar-sm
-            .btn-group
-              %a.btn.btn-default.calendar-button.1a{:href=>"#", :cal_id=>"1a"}
-                1e année
-            .btn-group
-              %a.btn.btn-default.calendar-button.2a{:href=>"#", :cal_id=>"2a"}
-                2e année
-              %a.btn.btn-default.calendar-button.2ao{:href=>"#", :cal_id=>"2ao"}
-                options
-              %a.btn.btn-default.calendar-button.2ailc{:href=>"#", :cal_id=>"2ailc"}
-                ILC
-              %a.btn.btn-default.calendar-button.2aisi{:href=>"#", :cal_id=>"2aisi"}
-                ISI
-            .btn-group
-              %a.btn.btn-default.calendar-button.3a{:href=>"#", :cal_id=>"3a"}
-                3e année
-              %a.btn.btn-default.calendar-button.3ailc{:href=>"#", :cal_id=>"3ailc"}
-                ILC
-              %a.btn.btn-default.calendar-button.3aisi{:href=>"#", :cal_id=>"3aisi"}
-                ISI
-              %a.btn.btn-default.calendar-button.3ao{:href=>"#", :cal_id=>"3ao"}
-                options
-            .btn-group
-              %a.btn.btn-default.calendar-button.bde{:href=>"#", :cal_id=>"bde"}
-                BDE
+            - @calendars.each_key do |group|
+              .btn-group.btn-group-sm.cal-group{:data => {'cal-group' => group}}
+                %button.btn.btn-primary.cal-group-button= group
+                - @calendars[group].each do |key, cal|
+                  %button.btn.btn-default.cal-button{:type => 'button', 
+                    :autocomplete => 'off', 
+                    :data => {:toggle => 'button', 
+                      :key => key,
+                      :group => group,
+                      :cal => cal}}= cal['text']
+            .btn-group.pull-right
+              %button#export-button.btn.btn-primary.btn-sm{'data-container' => 'body', 
+                'data-toggle' => 'popover', 
+                'data-placement' => 'bottom'}
+                Exporter
+                %span.caret
       .panel-body
         .row
           #calendar
-:javascript
-  window.current_user_promo = #{current_user.promo}
+#export-menu-contents.hidden
+  %dl
+    - @calendars.each do |group_key, group|
+      %dt{:data => {:group => group_key}}= group_key
+      %dd
+        %table
+          -group.each do |cal_key, cal|
+            %tr.cal-export-item{:data => {:key => cal_key}}
+              %td.text= cal['text']
+              %td.links
+                = link_to "html", cal['public']['html'], {class: 'btn btn-xs btn-default', target: '_blank'}
+                = link_to "ical", cal['public']['ical'], {class: 'btn btn-xs btn-default'}

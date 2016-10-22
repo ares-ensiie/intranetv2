@@ -1,15 +1,95 @@
 calendar:
   key: AIzaSyD7A3BcJKsHCB7XEoGxQ5BGIhYhF0P42fA
-  1a: 169u8pr5vrf296hmigiehltr8o@group.calendar.google.com
-  2a: cmr96jsu22k4qs7mh0akh6u9vc@group.calendar.google.com
-  2ao: 0n50q3l187pmjujgooeuq1ajmo@group.calendar.google.com
-  2ailc: tuncqd8et6hgjsm2baok6vefpc69kir1@import.calendar.google.com
-  2aisi: r52qvo7nfr7n5hdv0gib47motuc2tcn3@import.calendar.google.com
-  3a: k9lf59hq805o5enoo01mhjv9m8@group.calendar.google.com
-  3ao: ao4pukmvs5gdh0nci38akoc0n8@group.calendar.google.com
-  3ailc: ql6794s618ns58qgh56qdehcjnnc7987@import.calendar.google.com
-  3aisi: ecpq8mr4fhj2agd10sncsbd13ho74rj2@import.calendar.google.com
-  bde: lhonilnm3lvk7o4g1d556pf1hk@group.calendar.google.com
+  default:
+    all:
+      BDE:
+        - evts
+    2019:
+      1A:
+        - cours
+    2018:
+      2A:
+        - cours
+        - options
+    2017:
+      3A:
+        - cours
+        - options
+  list:
+    1A:
+      cours: 
+        id: 169u8pr5vrf296hmigiehltr8o@group.calendar.google.com
+        text: "Cours"
+        color: "#006400"
+        public:
+          html: "https://www.google.com/calendar/embed?src=169u8pr5vrf296hmigiehltr8o%40group.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://calendar.google.com/calendar/ical/169u8pr5vrf296hmigiehltr8o%40group.calendar.google.com/public/basic.ics"
+    2A:
+      cours: 
+        id: cmr96jsu22k4qs7mh0akh6u9vc@group.calendar.google.com
+        text: "Cours"
+        color: "#ff8000"
+        public:
+          html: "https://www.google.com/calendar/embed?src=cmr96jsu22k4qs7mh0akh6u9vc%40group.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/cmr96jsu22k4qs7mh0akh6u9vc%40group.calendar.google.com/public/basic.ics"
+      options: 
+        id: 0n50q3l187pmjujgooeuq1ajmo@group.calendar.google.com
+        text: "Options"
+        color: "#ff0000"
+        public:
+          html: "https://www.google.com/calendar/embed?src=0n50q3l187pmjujgooeuq1ajmo%40group.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/0n50q3l187pmjujgooeuq1ajmo%40group.calendar.google.com/public/basic.ics"
+      ilc: 
+        id: cf31n2qun97bf7rkgd88eh3fhleslhg2@import.calendar.google.com
+        text: "ILC"
+        color: "#ff6366"
+        public:
+          html: "https://www.google.com/calendar/embed?src=cf31n2qun97bf7rkgd88eh3fhleslhg2%40import.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/cf31n2qun97bf7rkgd88eh3fhleslhg2%40import.calendar.google.com/public/basic.ics"
+      isi: 
+        id: ok0os11jcgjmum7n49p0cf0mpbmdd7qu@import.calendar.google.com
+        text: "ISI"
+        color: "#ff4400"
+        public:
+          html: "https://www.google.com/calendar/embed?src=ok0os11jcgjmum7n49p0cf0mpbmdd7qu%40import.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/ok0os11jcgjmum7n49p0cf0mpbmdd7qu%40import.calendar.google.com/public/basic.ics"
+    3A:
+      cours: 
+        id: k9lf59hq805o5enoo01mhjv9m8@group.calendar.google.com
+        text: "Cours"
+        color: "#2872d1"
+        public:
+          html: "https://www.google.com/calendar/embed?src=k9lf59hq805o5enoo01mhjv9m8%40group.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://calendar.google.com/calendar/ical/k9lf59hq805o5enoo01mhjv9m8%40group.calendar.google.com/public/basic.ics"
+      options: 
+        id: ao4pukmvs5gdh0nci38akoc0n8@group.calendar.google.com
+        text: "Options"
+        color: "#00008b"
+        public:
+          html: "https://www.google.com/calendar/embed?src=ao4pukmvs5gdh0nci38akoc0n8%40group.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://calendar.google.com/calendar/ical/ao4pukmvs5gdh0nci38akoc0n8%40group.calendar.google.com/public/basic.ics"
+      ilc: 
+        id: 8qmsb3vj2c8u78e1lmft2ac3i2cmevc2@import.calendar.google.com
+        text: "ILC"
+        color: "#79c5de"
+        public:
+          html: "https://www.google.com/calendar/embed?src=8qmsb3vj2c8u78e1lmft2ac3i2cmevc2%40import.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/8qmsb3vj2c8u78e1lmft2ac3i2cmevc2%40import.calendar.google.com/public/basic.ics"
+      isi: 
+        id: au0t4s83fn9j3gbbsed6aovv9qpojqos@import.calendar.google.com
+        text: "ISI"
+        color: "#1088ff"
+        public:
+          html: "https://www.google.com/calendar/embed?src=au0t4s83fn9j3gbbsed6aovv9qpojqos%40import.calendar.google.com&ctz=Europe/Paris"
+          ical: "https://www.google.com/calendar/ical/au0t4s83fn9j3gbbsed6aovv9qpojqos%40import.calendar.google.com/public/basic.ics"
+    BDE:
+      evts: 
+        id: lhonilnm3lvk7o4g1d556pf1hk@group.calendar.google.com
+        text: "Évènements"
+        color: "#9a0041"
+        public:
+          html: "https://calendar.google.com/calendar/embed?src=lhonilnm3lvk7o4g1d556pf1hk%40group.calendar.google.com&ctz=Europe/Brussels"
+          ical: "https://calendar.google.com/calendar/ical/lhonilnm3lvk7o4g1d556pf1hk%40group.calendar.google.com/public/basic.ics"
 aws:
   access_key_id: AKIAIPVH6UOBL23IZXBA
   secret_access_key: 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
