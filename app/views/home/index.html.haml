@@ -1,9 +1,9 @@
 %div{:class=>("col-sm-9" unless @users_today.empty? && @users_incoming.empty?)}
   .jumbotron
-    %h2 Bienvenue sur l'intranet de l'ENSIIE Strasbourg.
+    %h2 Bienvenue sur l'intranet de l'ENSIIE Strasbourg
 
     %p
-      L'intranet est en version alpha pour l'instant, énormément de fonctionnalités sont manquantes. Ces fonctionnalitées se rajouteront dans les prochains jours.
+      L'intranet est en version alpha pour l'instant, énormément de fonctionnalités sont manquantes. Ces fonctionnalités se rajouteront dans les prochains jours.
 
     %p
       Si vous trouvez un bug sur l'intranet ou sur l'un des services ARES n'hésitez pas à le signaler sur
@@ -20,18 +20,18 @@
         Anniversaires
         %i.fa.fa-birthday-cake.blue
       - if ! @users_today.empty?
-        Aujourd'hui :
+        %span.bold Aujourd'hui :
         %br
         - @users_today.each do | user |
           - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil
             = user.name.capitalize + ' ' + user.lastname.capitalize
           - else
             = user.uid
-          = ' a ' + (Date.current.year - user.birthday.year).to_s + ' ans'
+          = ' a ' + (Time.zone.now.year - user.birthday.year).to_s + ' ans'
           %br
 
       - if ! @users_incoming.empty?
-        A venir :
+        %span.bold A venir :
         %br
         - @users_incoming.each do | user |
           - if user.name != "" && user.lastname != "" && user.name != nil && user.lastname != nil

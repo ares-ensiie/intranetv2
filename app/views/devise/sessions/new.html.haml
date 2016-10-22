@@ -9,8 +9,12 @@
             = f.text_field :email, {label: "Ares Id", autofocus: true}
             = f.password_field :password, {label: "Mot de passe", autocomplete: "off"}
 
-            - if devise_mapping.rememberable?
-              .field
-                = f.check_box :remember_me, label: "Se souvenir de moi"
+            .row
+              - if devise_mapping.rememberable?
+                .field.col-sm-6
+                  = f.check_box :remember_me, label: "Se souvenir de moi"
+              - if devise_mapping.recoverable?
+                .field.text-right.col-sm-6{style: "margin-top:10px;"}
+                  = link_to "J'ai oublié mon mot de passe", forgotten_password_path
             .actions
               = f.submit "Connexion"

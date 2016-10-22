@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get "/users" => "users#index", as: :users
 
+  get "/users/forgotten_password" => "users#forgotten_password", as: :forgotten_password
+  post "/users/send_reset_instructions" => "users#send_reset_instructions", as: :send_reset_instructions
+  get "/users/reset_password" => "users#reset_password", as: :reset_password
+  post "/users/modify_password" => "users#modify_password", as: :modify_password
+  
   resources :users, only: [:edit, :update] do
     put "/password" => "users#update_password", as: :update_password
     get "/password" => "users#edit_password"
@@ -25,6 +30,10 @@ Rails.application.routes.draw do
 
   get '/files/*path' => 'files#index', as: :files
   get '/files' => 'files#index', as: :base_files
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
