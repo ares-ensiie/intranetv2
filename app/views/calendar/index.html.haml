@@ -6,16 +6,17 @@
       .panel-body.text-center
         .row
           .btn-toolbar-sm
-            - @calendars.each_key do |group|
+            - @groups.each do |group, members|
               .btn-group.btn-group-sm.cal-group{:data => {'cal-group' => group}}
                 %button.btn.btn-primary.cal-group-button= group
-                - @calendars[group].each do |key, cal|
+                - members.each do |cal|
                   %button.btn.btn-default.cal-button{:type => 'button', 
                     :autocomplete => 'off', 
                     :data => {:toggle => 'button', 
-                      :key => key,
+                      :key => cal,
                       :group => group,
-                      :cal => cal}}= cal['text']
+                      :cal => @calendars[cal],
+                      :default => @default_cals.include?(cal) }}= @calendars[cal]['text']
             .btn-group.pull-right
               %button#export-button.btn.btn-primary.btn-sm{'data-container' => 'body', 
                 'data-toggle' => 'popover', 
@@ -27,13 +28,13 @@
           #calendar
 #export-menu-contents.hidden
   %dl
-    - @calendars.each do |group_key, group|
-      %dt{:data => {:group => group_key}}= group_key
+    - @groups.each do |group, members|
+      %dt{:data => {:group => group}}= group
       %dd
         %table
-          -group.each do |cal_key, cal|
-            %tr.cal-export-item{:data => {:key => cal_key}}
-              %td.text= cal['text']
+          - members.each do |cal|
+            %tr.cal-export-item{:data => {:key => cal}}
+              %td.text= @calendars[cal]['text']
               %td.links
-                = link_to "html", cal['public']['html'], {class: 'btn btn-xs btn-default', target: '_blank'}
-                = link_to "ical", cal['public']['ical'], {class: 'btn btn-xs btn-default'}
+                = link_to "html", @calendars[cal]['public']['html'], {class: 'btn btn-xs btn-default', target: '_blank'}
+                = link_to "ical", @calendars[cal]['public']['ical'], {class: 'btn btn-xs btn-default'}
