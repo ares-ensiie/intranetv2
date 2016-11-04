@@ -22,7 +22,7 @@
                       %th Télephone
                       %th Profil
                   %tbody
-                    - list.sort_by{|user| [user.lastname.titleize || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz", user.name.titleize]}.each do | user |
+                    - list.sort_by{|user| [(user.lastname && user.lastname != "" && user.lastname.titleize) || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz", (user.name && user.name != "" && user.name.titleize) || "zzzzzzzzzzzzzzzzzzzzzzzzzzzz"]}.each do | user |
                       %tr
                         %td
                           - if user.lastname
