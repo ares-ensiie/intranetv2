@@ -6,7 +6,7 @@
           %h3.panel-title Connexion
         .panel-body
           = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            = f.text_field :email, {label: "Ares Id", autofocus: true}
+            = f.text_field :email, {label: "Factiice Id", autofocus: true}
             = f.password_field :password, {label: "Mot de passe", autocomplete: "off"}
 
             .row
@@ -17,4 +17,4 @@
                 .field.text-right.col-sm-6{style: "margin-top:10px;"}
                   = link_to "J'ai oublié mon mot de passe", forgotten_password_path
             .actions
-              = f.submit "Connexion"
+              = f.submit "Voter factiice"
