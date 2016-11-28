@@ -3,6 +3,7 @@ calendar:
   default:
     all:
       - evtsBDE
+      - campagne
     2019:
       - cours1A
     2018:
@@ -26,6 +27,7 @@ calendar:
       - isi3A
     BDE:
       - evtsBDE
+      - campagne
   list:
     cours1A: 
       id: 169u8pr5vrf296hmigiehltr8o@group.calendar.google.com
@@ -97,6 +99,13 @@ calendar:
       public:
         html: "https://calendar.google.com/calendar/embed?src=lhonilnm3lvk7o4g1d556pf1hk%40group.calendar.google.com&ctz=Europe/Brussels"
         ical: "https://calendar.google.com/calendar/ical/lhonilnm3lvk7o4g1d556pf1hk%40group.calendar.google.com/public/basic.ics"
+    campagne:
+      id: kf3uhrlgbin1aae9uvvii1m6bc@group.calendar.google.com
+      text: "Campagne"
+      color: "#390060"
+      public:
+        html: "https://calendar.google.com/calendar/embed?src=kf3uhrlgbin1aae9uvvii1m6bc%40group.calendar.google.com&ctz=Europe/Paris"
+        ical: "https://calendar.google.com/calendar/ical/kf3uhrlgbin1aae9uvvii1m6bc%40group.calendar.google.com/public/basic.ics"
 aws:
   access_key_id: AKIAIPVH6UOBL23IZXBA
   secret_access_key: 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
