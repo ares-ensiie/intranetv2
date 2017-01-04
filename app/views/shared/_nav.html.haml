@@ -5,7 +5,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "FACTIICE Intranet", root_path, :class => "navbar-brand"
+      = link_to "ENSIIE Intranet", root_path, :class => "navbar-brand"
     .collapse.navbar-collapse#main-menu-collapse
       %ul.nav.navbar-nav
         %li
@@ -24,17 +24,17 @@
             %li
               = link_to "Stages", "https://internships.ares-ensiie.eu/", :target => "_blank"
             %li
-              = link_to "Ragots de Factiice", "https://ragots.ares-ensiie.eu", :target => "_blank"
+              = link_to "Ragots", "https://ragots.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "Chat Factiice", "https://slack.ares-ensiie.eu", :target=>"_blank" 
+              = link_to "Slack", "https://slack.ares-ensiie.eu", :target=>"_blank" 
             %li
-              = link_to "Photos Factiice", "https://galeriie.ares-ensiie.eu", :target => "_blank"
+              = link_to "Galeriie", "https://galeriie.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "Manger Factiice", "https://drinkiit.ares-ensiie.eu", :target => "_blank"
+              = link_to "Drinkiit", "https://drinkiit.ares-ensiie.eu", :target => "_blank"
             %li
               = link_to "Blog Ares", "https://blog.ares-ensiie.eu", :target => "_blank"
             %li
-              = link_to "Liste des membres Factiice", users_path
+              = link_to "Annuaire", users_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Outils
@@ -72,4 +72,4 @@
               = link_to "Applications autorisées", oauth_authorized_applications_path
             %li.divider{:role => "separator"}
             %li
-              = link_to "Quitter toute autre liste", destroy_user_session_path, :method => :delete
+              = link_to "Deconnexion", destroy_user_session_path, :method => :delete
